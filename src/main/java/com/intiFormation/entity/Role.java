@@ -7,6 +7,8 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+//rere
+
 public class Role {
 
 	private int id;
