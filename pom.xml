@@ -75,21 +75,20 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
+
+			<groupId>org.apache.tomcat.embed</groupId>
+
+			<artifactId>tomcat-embed-jasper</artifactId>
+
+			<scope>provided</scope>
+
 		</dependency>
-		
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
 		</dependency>
 
-		<dependency>
-			<groupId>fr.intiformation</groupId>
-			<artifactId>GestionPersonne</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 		<dependency>
 		<groupId>io.jsonwebtoken</groupId>
 		<artifactId>jjwt</artifactId>

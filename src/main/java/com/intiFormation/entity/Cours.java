@@ -1,5 +1,6 @@
 package com.intiFormation.entity;
 
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,6 +15,8 @@ public class Cours {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private long duree;
+
+
 	private String fichier;// String ou String?
 
 	@ManyToMany(mappedBy = "cours")
