@@ -4,15 +4,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Utilisateur extends Personne{
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Utilisateur extends Personne{
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)// Toutes les classes filles vont avoir l'id qui s'autoincrémente ensemble
 	private int id;
 	private String username;
 	private String password;
