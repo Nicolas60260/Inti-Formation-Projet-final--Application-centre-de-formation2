@@ -8,6 +8,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //rere
+//comm2
 
 public class Role {
 
