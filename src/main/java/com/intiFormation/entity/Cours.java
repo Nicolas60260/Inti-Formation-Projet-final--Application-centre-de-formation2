@@ -1,6 +1,5 @@
 package com.intiFormation.entity;
 
-import java.io.File;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -15,7 +14,7 @@ public class Cours {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private long duree;
-	private File fichier;
+	private String fichier;// String ou String?
 
 	@ManyToMany(mappedBy = "cours")
 	private List<Formation> formations;
@@ -25,7 +24,7 @@ public class Cours {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cours(int id, long duree, File fichier, List<Formation> formations) {
+	public Cours(int id, long duree, String fichier, List<Formation> formations) {
 		super();
 		this.id = id;
 		this.duree = duree;
@@ -49,11 +48,11 @@ public class Cours {
 		this.duree = duree;
 	}
 
-	public File getFichier() {
+	public String getFichier() {
 		return fichier;
 	}
 
-	public void setFichier(File fichier) {
+	public void setFichier(String fichier) {
 		this.fichier = fichier;
 	}
 

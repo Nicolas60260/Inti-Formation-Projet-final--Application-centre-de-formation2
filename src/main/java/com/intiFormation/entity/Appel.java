@@ -3,9 +3,16 @@ package com.intiFormation.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
@@ -18,7 +25,11 @@ public class Appel {
 	
 	
 //////////////////////////Attributs inhérents à Commentaire//////////////////////////
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
 	Date debutAppel;
 	long duree;
 	boolean RDV;
@@ -27,7 +38,7 @@ public class Appel {
 	
 	
 	@ManyToOne
-	@JoinColumn(name="idappel")
+	@JoinColumn(name="idcommercial")
 	Commercial commercial;
 	
 	@OneToOne(mappedBy = "appel")
@@ -35,7 +46,7 @@ public class Appel {
 	
 	//Relations à gérer
 	@ManyToOne
-	@JoinColumn(name="idappel")
+	@JoinColumn(name="idprospect")
 	Prospect prospect;
 
 	

@@ -1,4 +1,4 @@
-package fr.intiformation;
+package com.intiFormation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
