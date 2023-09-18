@@ -15,7 +15,9 @@ public class Cours {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private long duree;
-	private String fichier;
+
+
+	private String fichier;// String ou String?
 
 	@ManyToMany(mappedBy = "cours")
 	private List<Formation> formations;
