@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 @Entity
 public class Commercial extends Utilisateur{
-//Commentaire
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
