@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Cours {
 	@Id
@@ -20,6 +22,7 @@ public class Cours {
 	private String fichier;// String ou String?
 
 	@ManyToMany(mappedBy = "cours")
+	@JsonIgnore
 	private List<Formation> formations;
 
 	public Cours() {
