@@ -13,31 +13,35 @@ import com.intiFormation.entity.Utilisateur;
 public class UtilisateurService implements IutilisateurService{
 	@Autowired
 	IutilisateurDao dao;
-		
-		@Override
-		public Utilisateur ajouter(Utilisateur utilisateur) {
-			return dao.save(utilisateur);
-		}
+	
+	public List<Utilisateur> afficherAll()
+	{
+		return dao.findAll();
+	}
+	
+	public Utilisateur afficherParId(int id)
+	{
+		return dao.findById(id).get();
+	}
+	
+	public void ajouter(Utilisateur u)
+	{
+		dao.save(u);
+	}
+	
+	public void supprimer(int id)
+	{
+		dao.deleteById(id);
+	}
+	
+	public void modifier(Utilisateur u)
+	{
+		dao.save(u);
+	}
 
-		@Override
-		public void supprimer(int id) {
-	dao.deleteById(id);		
-		}
-
-		@Override
-		public Optional<Utilisateur> selectById(int id) {
-			return dao.findById(id);
-		}
-
-		@Override
-		public List<Utilisateur> selectAll() {
-			return dao.findAll();
-		}
-
-		@Override
-		public Optional<Utilisateur> findByUsername(String username) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+	@Override
+	public Optional<Utilisateur> findByUsername(String username) {
+		return dao.findByUsername(username);
+	}
 
 }

@@ -3,7 +3,6 @@ package com.intiFormation.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,30 +15,34 @@ import com.intiFormation.entity.Utilisateur;
 import com.intiFormation.service.IutilisateurService;
 
 @RestController
-@RequestMapping("/utilisateur")
-@CrossOrigin("http://localhost:4200")
 public class UtilisateurController {
-
+	
 	@Autowired
-	IutilisateurService utilisateurService;
-
-	@GetMapping("/public")
-	public List<Utilisateur> listeUtilisateur() {
-		return utilisateurService.selectAll();
+	private IutilisateurService iutilisateurService;
+	
+	@GetMapping(path = "/listUtilisateur")// pas ok
+	public List<Utilisateur> listUtilisateur(){
+		return iutilisateurService.afficherAll();
+	}
+	
+	@GetMapping(path = "/getUtilisateur/{id}")// ok
+	public Utilisateur getUtilisateur(@PathVariable("id") int  id){
+		return iutilisateurService.afficherParId(id);
+	}
+	
+	@PostMapping(path = "/addNewUtilisateur")// ok
+	public void SaveUser(@RequestBody Utilisateur personne) {
+		iutilisateurService.ajouter(personne);
+	}
+	
+	@PostMapping(path = "/modifyUtilisateur") //ok
+	public void modifyUtilisateur(@RequestBody Utilisateur personne) {
+		iutilisateurService.modifier(personne);
+	}
+	
+	@DeleteMapping("/deleteUtilisateur/{id}")
+	public void deleteUtilisateur(@PathVariable("id") int  id) {
+		iutilisateurService.supprimer(id);
 	}
 
-	@GetMapping("/public/{id}")
-	public Utilisateur utilisateurById(@PathVariable("id") int id) {
-		return utilisateurService.selectById(id).get();
-	}
-
-	@PostMapping("/utilisateur/save")
-	public Utilisateur saveUtilisateur(@RequestBody Utilisateur utilisateur) {
-		return utilisateurService.ajouter(utilisateur);
-	}
-
-	@DeleteMapping("/admin/supprimer/{id}")
-	public void supprimerUtilisateur(@PathVariable("id") int id) {
-		utilisateurService.supprimer(id);
-	}
 }

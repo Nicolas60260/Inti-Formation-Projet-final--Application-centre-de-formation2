@@ -6,11 +6,17 @@ import java.util.Optional;
 import com.intiFormation.entity.Utilisateur;
 
 public interface IutilisateurService {
-	
-	public Utilisateur ajouter(Utilisateur utilisateur);
+
+	public List<Utilisateur> afficherAll();
+
+	public Utilisateur afficherParId(int id);
+
+	public void ajouter(Utilisateur u);
+
 	public void supprimer(int id);
-	public Optional<Utilisateur> selectById(int id);
-	public List<Utilisateur> selectAll();
+
+	public void modifier(Utilisateur u);
+	
 	public Optional<Utilisateur> findByUsername(String username);
 
 }
