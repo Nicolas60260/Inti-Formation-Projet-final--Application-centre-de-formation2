@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+
 public class Formateur extends Utilisateur {
 
 	@OneToMany(mappedBy = "formateur")
@@ -21,6 +22,7 @@ public class Formateur extends Utilisateur {
 	public Formateur(int id, String mail, String nom, String prenom, Long telephone, String username, String password,
 			Role role, List<Formation> formations) {
 		super(id, mail, nom, prenom, telephone, username, password, role);
+
 		this.formations = formations;
 	}
 
@@ -29,11 +31,13 @@ public class Formateur extends Utilisateur {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public Formateur(int id, String mail, String nom, String prenom, Long telephone, String username, String password,
 			Role role) {
 		super(id, mail, nom, prenom, telephone, username, password, role);
 		// TODO Auto-generated constructor stub
 	}
+
 
 	public Formateur(int id, String mail, String nom, String prenom, Long telephone) {
 		super(id, mail, nom, prenom, telephone);

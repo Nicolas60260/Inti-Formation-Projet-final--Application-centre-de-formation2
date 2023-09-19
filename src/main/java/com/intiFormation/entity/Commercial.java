@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Commercial extends Utilisateur{
+
 	@OneToMany(mappedBy="commercial")
 	private List<Appel> appels;
 	
@@ -23,6 +24,9 @@ public class Commercial extends Utilisateur{
 		this.appels = appels;
 		this.commentaires = commentaires;
 	}
+
+
+
 
 	public Commercial() {
 		super();

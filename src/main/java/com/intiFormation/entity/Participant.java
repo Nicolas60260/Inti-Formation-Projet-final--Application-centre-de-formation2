@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Participant extends Utilisateur {
+
 	private double sommeDue;
 
 	@ManyToMany (mappedBy = "participants")
@@ -36,6 +37,7 @@ public class Participant extends Utilisateur {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public Participant(int id, String mail, String nom, String prenom, Long telephone, String username, String password,
 			Role role) {
 		super(id, mail, nom, prenom, telephone, username, password, role);
@@ -46,6 +48,7 @@ public class Participant extends Utilisateur {
 		super(id, mail, nom, prenom, telephone);
 		// TODO Auto-generated constructor stub
 	}
+
 
 	public double getSommeDue() {
 		return sommeDue;
@@ -73,7 +76,9 @@ public class Participant extends Utilisateur {
 
 	@Override
 	public String toString() {
+
 		return "Participant [sommeDue=" + sommeDue + ", formations=" + formations + ", paiements=" + paiements + "]";
+
 	}
 	
 	

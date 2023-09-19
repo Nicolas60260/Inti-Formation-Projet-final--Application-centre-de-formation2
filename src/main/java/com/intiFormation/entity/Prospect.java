@@ -10,7 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
+
 public class Prospect extends Personne {
+
 	private String statut;
 	@OneToMany(mappedBy = "prospect")
 	private List<Appel> appels;
@@ -49,9 +51,11 @@ public class Prospect extends Personne {
 	public void setCommentaires(List<Commentaire> commentaires) {
 		this.commentaires = commentaires;
 	}
+
 	@Override
 	public String toString() {
 		return "Prospect [statut=" + statut + ", appels=" + appels + ", commentaires=" + commentaires + "]";
+
 	}
 
 

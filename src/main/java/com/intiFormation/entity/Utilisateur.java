@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance
-public abstract class Utilisateur extends Personne{
+public class Utilisateur extends Personne{
 	private String username;
 	private String password;
 	@ManyToOne
