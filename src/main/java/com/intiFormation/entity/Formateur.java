@@ -2,6 +2,7 @@ package com.intiFormation.entity;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,9 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 @Entity
 public class Formateur extends Utilisateur{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
 	@OneToMany(mappedBy="formateur")
 	private List<Formation> formations;
 	public int getId() {

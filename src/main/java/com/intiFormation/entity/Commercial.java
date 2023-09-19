@@ -2,6 +2,7 @@ package com.intiFormation.entity;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +11,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Commercial extends Utilisateur{
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)// Auto vs Identity --> Auto va s'incrémenter par rapport à la classe mère, ici Utilisateur
 	private int id;
 	@OneToMany(mappedBy="commercial")
 	private List<Appel> appels;

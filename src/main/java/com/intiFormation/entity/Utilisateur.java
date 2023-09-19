@@ -1,5 +1,7 @@
 package com.intiFormation.entity;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,10 +11,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)// lien d'héritage hibernate
 public abstract class Utilisateur extends Personne{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)// Toutes les classes filles vont avoir l'id qui s'autoincrémente ensemble

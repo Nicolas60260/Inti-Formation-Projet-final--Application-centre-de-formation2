@@ -1,12 +1,20 @@
 package com.intiFormation.entity;
-
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)// lien d'héritage hibernate
 public abstract class Personne {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String mail;
 	private String nom;
