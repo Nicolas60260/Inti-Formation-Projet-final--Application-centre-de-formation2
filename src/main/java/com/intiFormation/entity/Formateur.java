@@ -9,17 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 @Entity
 public class Formateur extends Utilisateur{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private int id;
 	@OneToMany(mappedBy="formateur")
 	private List<Formation> formations;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+//	public int getId() {
+//		return id;
+//	}
+//	public void setId(int id) {
+//		this.id = id;
+//	}
 	public List<Formation> getFormations() {
 		return formations;
 	}
@@ -36,11 +36,7 @@ public class Formateur extends Utilisateur{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Formateur(int id, String mail, String nom, String prenom, Long telephone, int id2, String username,
-			String password, Role role) {
-		super(id, mail, nom, prenom, telephone, id2, username, password, role);
-		// TODO Auto-generated constructor stub
-	}
+	
 	public Formateur(int id, String mail, String nom, String prenom, Long telephone) {
 		super(id, mail, nom, prenom, telephone);
 		// TODO Auto-generated constructor stub

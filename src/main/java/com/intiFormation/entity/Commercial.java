@@ -9,9 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 @Entity
 public class Commercial extends Utilisateur{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private int id;
 	@OneToMany(mappedBy="commercial")
 	private List<Appel> appels;
 	
@@ -25,12 +25,12 @@ public class Commercial extends Utilisateur{
 	public void setCommentaires(List<Commentaire> commentaires) {
 		this.commentaires = commentaires;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+//	public int getId() {
+//		return id;
+//	}
+//	public void setId(int id) {
+//		this.id = id;
+//	}
 	public List<Appel> getAppels() {
 		return appels;
 	}

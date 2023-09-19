@@ -13,9 +13,9 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Participant extends Utilisateur {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private int id;
 	private double sommeDue;
 	
 	@ManyToMany (mappedBy = "participants")
@@ -31,21 +31,21 @@ public class Participant extends Utilisateur {
 	}
 	
 
-	public Participant(int id, double sommeDue, List<Formation> formations, List<Paiement> paiements) {
+	public Participant( double sommeDue, List<Formation> formations, List<Paiement> paiements) {
 		super();
-		this.id = id;
+		
 		this.sommeDue = sommeDue;
 		this.formations = formations;
 		this.paiements = paiements;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+//	public int getId() {
+//		return id;
+//	}
+//
+//	public void setId(int id) {
+//		this.id = id;
+//	}
 
 
 	public double getSommeDue() {
@@ -70,7 +70,7 @@ public class Participant extends Utilisateur {
 
 	@Override
 	public String toString() {
-		return "Participant [id=" + id + ", sommeDue=" + sommeDue + ", formations=" + formations + ", paiements="
+		return "Participant [ sommeDue=" + sommeDue + ", formations=" + formations + ", paiements="
 				+ paiements + "]";
 	}
 	

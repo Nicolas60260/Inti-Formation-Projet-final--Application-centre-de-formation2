@@ -10,9 +10,9 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Prospect extends Personne{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private int id;
 	private String statut;
 	@OneToMany(mappedBy="prospect")
 	private List<Appel> appels;
@@ -41,12 +41,12 @@ public class Prospect extends Personne{
 	public void setCommentaires(List<Commentaire> commentaires) {
 		this.commentaires = commentaires;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+//	public int getId() {
+//		return id;
+//	}
+//	public void setId(int id) {
+//		this.id = id;
+//	}
 	public String getStatut() {
 		return statut;
 	}
