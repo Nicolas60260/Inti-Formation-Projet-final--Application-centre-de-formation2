@@ -19,34 +19,6 @@ public class Formateur extends Utilisateur {
 	@JsonIgnore
 	private List<Formation> formations;
 
-<<<<<<< HEAD
-=======
-	public Formateur(int id, String mail, String nom, String prenom, Long telephone, String username, String password,
-			Role role, List<Formation> formations) {
-		super(id, mail, nom, prenom, telephone, username, password, role);
-
-		this.formations = formations;
-	}
-
-	public Formateur() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public Formateur(int id, String mail, String nom, String prenom, Long telephone, String username, String password,
-			Role role) {
-		super(id, mail, nom, prenom, telephone, username, password, role);
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public Formateur(int id, String mail, String nom, String prenom, Long telephone) {
-		super(id, mail, nom, prenom, telephone);
-		// TODO Auto-generated constructor stub
-	}
-
->>>>>>> main
 	public List<Formation> getFormations() {
 		return formations;
 	}
