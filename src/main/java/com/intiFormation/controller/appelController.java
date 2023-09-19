@@ -1,8 +1,7 @@
 package com.intiFormation.controller;
 
 import java.util.List;
-
-import javax.websocket.server.PathParam;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,60 +12,60 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.intiFormation.entity.Prospect;
-import com.intiFormation.service.IprospectService;
+import com.intiFormation.entity.Appel;
+import com.intiFormation.service.IappelService;
+import com.intiFormation.service.IcommentaireService;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
-@RequestMapping("/pr")
-public class prospectController {
+@RequestMapping("/call")
+public class appelController {
 
-	// Création du Bean Service pour appel à la couche Service et aux methodes CRUD de prospect
-
-		@Autowired
-		IprospectService service;
-		
+	// Injection
+	@Autowired
+	IappelService service;
+	IcommentaireService serviceCommentaire;
+	
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 ///////////////////////////////////////////Redéfinition des méthodes de la couche service///////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	@PostMapping()
+	public Appel addAppel(@RequestBody Appel appel) {
+		
+		
+		return service.ajouterAppel(appel);
+	}
+	
+	@DeleteMapping("/{id}")
+	public void supprAppel(@PathVariable ("id") Integer id) {
+		service.supprimerAppel(id);
+		
+	}
+	
+	@PutMapping
+	public Appel modifAppel(@RequestBody Appel appel) {
+//	Appel appelSend = service.selectAppelById(appel.getId());
 		
 	
-		@PostMapping
-		public Prospect addProspect(@RequestBody Prospect prospect) {
-			
-			
-			return service.ajouterProspect(prospect);
-		}
+	
+		return service.ajouterAppel(appel);
+
+	}
+	
+	@GetMapping("/liste")
+	public List<Appel> afficherAll(){
 		
-		@DeleteMapping("/{id}")
-		public void supprProspect(@PathVariable ("id") Integer id) {
-			service.supprimerProspect(id);
-			
-		}
+		return service.selectAllAppels();
+	}
+	
+	@GetMapping("/{id}")
+	public Appel afficherById(@PathVariable ("id") Integer id){
 		
-		@PutMapping
-		public Prospect modifProspect(@RequestBody Prospect prospect) {
-			//Prospect prospectMod= service.afficherProspectById(id);
-			
-			return service.ajouterProspect(prospect);
-			
-		}
 		
-		@GetMapping("/liste")
-		public List<Prospect> afficherAll(){
-			
-			return service.afficherAllProspect();
-		}
-		
-		@GetMapping("/{id}")
-		public Prospect afficherById(@PathVariable ("id") Integer id){
-			
-			
-			return service.afficherProspectById(id);
-		}
-		
+		return service.selectAppelById(id);
+	}
+	
 }
