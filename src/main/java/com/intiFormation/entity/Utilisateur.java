@@ -1,7 +1,7 @@
 package com.intiFormation.entity;
 
 import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,13 +11,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)// lien d'héritage hibernate
-public abstract class Utilisateur extends Personne{
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)// Toutes les classes filles vont avoir l'id qui s'autoincrémente ensemble
-	private int id;
+@Inheritance
+public class Utilisateur extends Personne{
 	private String username;
 	private String password;
 	@ManyToOne
@@ -33,27 +29,13 @@ public abstract class Utilisateur extends Personne{
 	public String getPassword() {
 		return password;
 	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public Role getRole() {
 		return role;
 	}
 	public void setRole(Role role) {
-		this.role = role;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public Utilisateur(int id, String mail, String nom, String prenom, Long telephone, int id2, String username,
-			String password, Role role) {
-		super(id, mail, nom, prenom, telephone);
-		id = id2;
-		this.username = username;
-		this.password = password;
 		this.role = role;
 	}
 	public Utilisateur() {
@@ -64,6 +46,14 @@ public abstract class Utilisateur extends Personne{
 		super(id, mail, nom, prenom, telephone);
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "Utilisateur [username=" + username + ", password=" + password + ", role=" + role + "]";
+	}
+	
+	
+	
+	
 	
 	
 	

@@ -9,7 +9,7 @@ import com.intiFormation.dao.IutilisateurDao;
 import com.intiFormation.entity.Utilisateur;
 
 @Service
-public class utilisateurService implements IutilisateurService{
+public class UtilisateurService implements IutilisateurService{
 	@Autowired
 	IutilisateurDao dao;
 	

@@ -15,28 +15,27 @@ import com.intiFormation.entity.Utilisateur;
 import com.intiFormation.service.IutilisateurService;
 
 @RestController
-@RequestMapping("utilisateur")
-public class utilisateurController {
+public class UtilisateurController {
 	
 	@Autowired
 	private IutilisateurService iutilisateurService;
 	
-	@GetMapping(path = "/listUtilisateur")
+	@GetMapping(path = "/listUtilisateur")// pas ok
 	public List<Utilisateur> listUtilisateur(){
 		return iutilisateurService.afficherAll();
 	}
 	
-	@GetMapping(path = "/getUtilisateur/{id}")
+	@GetMapping(path = "/getUtilisateur/{id}")// ok
 	public Utilisateur getUtilisateur(@PathVariable("id") int  id){
 		return iutilisateurService.afficherParId(id);
 	}
 	
-	@PostMapping(path = "/addNewUtilisateur")
+	@PostMapping(path = "/addNewUtilisateur")// ok
 	public void SaveUser(@RequestBody Utilisateur personne) {
 		iutilisateurService.ajouter(personne);
 	}
 	
-	@PostMapping(path = "/modifyUtilisateur")
+	@PostMapping(path = "/modifyUtilisateur") //ok
 	public void modifyUtilisateur(@RequestBody Utilisateur personne) {
 		iutilisateurService.modifier(personne);
 	}
