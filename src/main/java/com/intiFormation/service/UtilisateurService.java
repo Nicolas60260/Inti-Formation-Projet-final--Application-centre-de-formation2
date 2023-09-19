@@ -1,6 +1,7 @@
 package com.intiFormation.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,11 @@ public class UtilisateurService implements IutilisateurService{
 	public void modifier(Utilisateur u)
 	{
 		dao.save(u);
+	}
+
+	@Override
+	public Optional<Utilisateur> findByUsername(String username) {
+		return dao.findByUsername(username);
 	}
 
 }
