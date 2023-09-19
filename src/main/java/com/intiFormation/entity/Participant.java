@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -23,32 +25,6 @@ public class Participant extends Utilisateur {
 	
 	@OneToMany(mappedBy = "participant")
 	private List<Paiement> paiements;
-
-	public Participant(int id, String mail, String nom, String prenom, Long telephone, String username, String password,
-			Role role, double sommeDue, List<Formation> formations, List<Paiement> paiements) {
-		super(id, mail, nom, prenom, telephone, username, password, role);
-		this.sommeDue = sommeDue;
-		this.formations = formations;
-		this.paiements = paiements;
-	}
-
-	public Participant() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public Participant(int id, String mail, String nom, String prenom, Long telephone, String username, String password,
-			Role role) {
-		super(id, mail, nom, prenom, telephone, username, password, role);
-		// TODO Auto-generated constructor stub
-	}
-
-	public Participant(int id, String mail, String nom, String prenom, Long telephone) {
-		super(id, mail, nom, prenom, telephone);
-		// TODO Auto-generated constructor stub
-	}
-
 
 	public double getSommeDue() {
 		return sommeDue;
@@ -74,12 +50,30 @@ public class Participant extends Utilisateur {
 		this.paiements = paiements;
 	}
 
+	public Participant() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Participant(int id, String mail, String nom, String prenom, Long telephone) {
+		super(id, mail, nom, prenom, telephone);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Participant(double sommeDue, List<Formation> formations, List<Paiement> paiements) {
+		super();
+		this.sommeDue = sommeDue;
+		this.formations = formations;
+		this.paiements = paiements;
+	}
+
 	@Override
 	public String toString() {
 
 		return "Participant [sommeDue=" + sommeDue + ", formations=" + formations + ", paiements=" + paiements + "]";
 
 	}
+
 	
 	
 	

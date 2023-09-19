@@ -19,21 +19,7 @@ public class Utilisateur extends Personne{
 	@ManyToOne
 	@JoinColumn(name="idrole")
 	private Role role;
-	public Utilisateur(int id, String mail, String nom, String prenom, Long telephone, String username, String password,
-			Role role) {
-		super(id, mail, nom, prenom, telephone);
-		this.username = username;
-		this.password = password;
-		this.role = role;
-	}
-	public Utilisateur() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Utilisateur(int id, String mail, String nom, String prenom, Long telephone) {
-		super(id, mail, nom, prenom, telephone);
-		// TODO Auto-generated constructor stub
-	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -52,10 +38,20 @@ public class Utilisateur extends Personne{
 	public void setRole(Role role) {
 		this.role = role;
 	}
+	public Utilisateur() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Utilisateur(int id, String mail, String nom, String prenom, Long telephone) {
+		super(id, mail, nom, prenom, telephone);
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return "Utilisateur [username=" + username + ", password=" + password + ", role=" + role + "]";
 	}
+	
+	
 	
 	
 	

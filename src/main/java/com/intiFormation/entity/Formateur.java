@@ -19,31 +19,6 @@ public class Formateur extends Utilisateur {
 	@JsonIgnore
 	private List<Formation> formations;
 
-	public Formateur(int id, String mail, String nom, String prenom, Long telephone, String username, String password,
-			Role role, List<Formation> formations) {
-		super(id, mail, nom, prenom, telephone, username, password, role);
-
-		this.formations = formations;
-	}
-
-	public Formateur() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public Formateur(int id, String mail, String nom, String prenom, Long telephone, String username, String password,
-			Role role) {
-		super(id, mail, nom, prenom, telephone, username, password, role);
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public Formateur(int id, String mail, String nom, String prenom, Long telephone) {
-		super(id, mail, nom, prenom, telephone);
-		// TODO Auto-generated constructor stub
-	}
-
 	public List<Formation> getFormations() {
 		return formations;
 	}
@@ -52,10 +27,26 @@ public class Formateur extends Utilisateur {
 		this.formations = formations;
 	}
 
+	public Formateur() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Formateur(int id, String mail, String nom, String prenom, Long telephone) {
+		super(id, mail, nom, prenom, telephone);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Formateur(List<Formation> formations) {
+		super();
+		this.formations = formations;
+	}
+
 	@Override
 	public String toString() {
 		return "Formateur [formations=" + formations + "]";
 	}
+
 
 	
 	
