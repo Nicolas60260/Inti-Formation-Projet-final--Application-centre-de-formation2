@@ -11,12 +11,42 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Commercial extends Utilisateur{
+
 	@OneToMany(mappedBy="commercial")
 	private List<Appel> appels;
 	
 	@OneToMany(mappedBy="commercial")
 	private List<Commentaire> commentaires;
 
+<<<<<<< HEAD
+=======
+	public Commercial(int id, String mail, String nom, String prenom, Long telephone, String username, String password,
+			Role role, List<Appel> appels, List<Commentaire> commentaires) {
+		super(id, mail, nom, prenom, telephone, username, password, role);
+		this.appels = appels;
+		this.commentaires = commentaires;
+	}
+
+
+
+
+	public Commercial() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Commercial(int id, String mail, String nom, String prenom, Long telephone, String username, String password,
+			Role role) {
+		super(id, mail, nom, prenom, telephone, username, password, role);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Commercial(int id, String mail, String nom, String prenom, Long telephone) {
+		super(id, mail, nom, prenom, telephone);
+		// TODO Auto-generated constructor stub
+	}
+
+>>>>>>> main
 	public List<Appel> getAppels() {
 		return appels;
 	}
