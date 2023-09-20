@@ -22,17 +22,17 @@ public class PaiementController {
 	@Autowired
 	IpaiementService paiementService;
 
-	@GetMapping("/public")
+	@GetMapping("/public") //ok
 	public List<Paiement> listePaiement() {
 		return paiementService.selectAll();
 	}
 
-	@GetMapping("/public/{id}")
+	@GetMapping("/public/{id}")//ok
 	public Paiement paiementById(@PathVariable("id") int id) {
 		return paiementService.selectById(id).get();
 	}
 
-	@PostMapping("/formateur/save")
+	@PostMapping("/formateur/save") //ok
 	public Paiement savePaiement(@RequestBody Paiement paiement) {
 		return paiementService.ajouter(paiement);
 	}

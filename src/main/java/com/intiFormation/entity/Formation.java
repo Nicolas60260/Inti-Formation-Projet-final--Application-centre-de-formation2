@@ -22,11 +22,9 @@ public class Formation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nom;
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
+	@Temporal(TemporalType.DATE)//TIMESTAMP si on veut les minutes, secondes, etc..
 	private Date dateDebut;
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
 	private Date dateFin;
 	private double prix;
 

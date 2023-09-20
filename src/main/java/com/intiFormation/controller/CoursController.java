@@ -22,22 +22,22 @@ public class CoursController {
 	@Autowired
 	IcoursService coursService;
 
-	@GetMapping("/public")
+	@GetMapping("/public") //ok
 	public List<Cours> listeCours() {
 		return coursService.selectAll();
 	}
 
-	@GetMapping("/public/{id}")
+	@GetMapping("/public/{id}")//ok
 	public Cours coursById(@PathVariable("id") int id) {
 		return coursService.selectById(id).get();
 	}
 
-	@PostMapping("/formateur/save")
+	@PostMapping("/cours/save") //ok
 	public Cours saveCours(@RequestBody Cours cours) {
 		return coursService.ajouter(cours);
 	}
 
-	@DeleteMapping("/admin/supprimer/{id}")
+	@DeleteMapping("/admin/supprimer/{id}")//ok
 	public void supprimerCours(@PathVariable("id") int id) {
 		coursService.supprimer(id);
 	}

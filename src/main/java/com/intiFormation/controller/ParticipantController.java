@@ -22,22 +22,22 @@ public class ParticipantController {
 	@Autowired
 	IparticipantService participantService;
 
-	@GetMapping("/public")
+	@GetMapping("/public") //ok
 	public List<Participant> listeParticipant() {
 		return participantService.selectAll();
 	}
 
-	@GetMapping("/public/{id}")
+	@GetMapping("/public/{id}") //ok
 	public Participant participantById(@PathVariable("id") int id) {
 		return participantService.selectById(id).get();
 	}
 
-	@PostMapping("/formateur/save")
+	@PostMapping("/formateur/save") //ok
 	public Participant saveParticipant(@RequestBody Participant participant) {
 		return participantService.ajouter(participant);
 	}
 
-	@DeleteMapping("/admin/supprimer/{id}")
+	@DeleteMapping("/admin/supprimer/{id}") //ok
 	public void supprimerParticipant(@PathVariable("id") int id) {
 		participantService.supprimer(id);
 	}

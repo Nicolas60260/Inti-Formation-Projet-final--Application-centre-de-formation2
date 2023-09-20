@@ -22,22 +22,22 @@ public class FormationController {
 	@Autowired
 	IformationService formationService;
 
-	@GetMapping("/public")
+	@GetMapping("/public")//ok
 	public List<Formation> listeFormation() {
 		return formationService.selectAll();
 	}
 
-	@GetMapping("/public/{id}")
+	@GetMapping("/public/{id}")//ok
 	public Formation formationById(@PathVariable("id") int id) {
 		return formationService.selectById(id).get();
 	}
 
-	@PostMapping("/formateur/save")
+	@PostMapping("/formation/save")//ok
 	public Formation saveFormation(@RequestBody Formation formation) {
 		return formationService.ajouter(formation);
 	}
 
-	@DeleteMapping("/admin/supprimer/{id}")
+	@DeleteMapping("/admin/supprimer/{id}")//ok
 	public void supprimerFormation(@PathVariable("id") int id) {
 		formationService.supprimer(id);
 

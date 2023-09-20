@@ -22,22 +22,22 @@ public class FormateurController {
 	@Autowired
 	IformateurService formateurService;
 
-	@GetMapping("/public")
+	@GetMapping("/public") // ok
 	public List<Formateur> listeFormateur() {
 		return formateurService.selectAll();
 	}
 
-	@GetMapping("/public/{id}")
+	@GetMapping("/public/{id}") // ok
 	public Formateur formateurById(@PathVariable("id") int id) {
 		return formateurService.selectById(id).get();
 	}
 
-	@PostMapping("/formateur/save")
+	@PostMapping("/formateur/save")//ok
 	public Formateur saveFormateur(@RequestBody Formateur formateur) {
 		return formateurService.ajouter(formateur);
 	}
 
-	@DeleteMapping("/admin/supprimer/{id}")
+	@DeleteMapping("/admin/supprimer/{id}") //ok
 	public void supprimerFormateur(@PathVariable("id") int id) {
 		formateurService.supprimer(id);
 	}
