@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Formateur;
+import com.intiFormation.entity.Role;
 import com.intiFormation.service.IformateurService;
+import com.intiFormation.service.IroleService;
 
 @RestController
 @RequestMapping("/formateur")
@@ -21,8 +23,11 @@ import com.intiFormation.service.IformateurService;
 public class FormateurController {
 	@Autowired
 	IformateurService formateurService;
-
-	@GetMapping("/public") // ok
+@Autowired
+IroleService roleservice;
+	
+	
+	@GetMapping("/public/list")
 	public List<Formateur> listeFormateur() {
 		return formateurService.selectAll();
 	}
@@ -32,12 +37,15 @@ public class FormateurController {
 		return formateurService.selectById(id).get();
 	}
 
-	@PostMapping("/formateur/save")//ok
+	@PostMapping("/f/add")
 	public Formateur saveFormateur(@RequestBody Formateur formateur) {
+		Role role = roleservice.findByNom("FORMATEUR");
+		formateur.setRole(role);
+		
 		return formateurService.ajouter(formateur);
 	}
 
-	@DeleteMapping("/admin/supprimer/{id}") //ok
+	@DeleteMapping("/a/delete/{id}")
 	public void supprimerFormateur(@PathVariable("id") int id) {
 		formateurService.supprimer(id);
 	}

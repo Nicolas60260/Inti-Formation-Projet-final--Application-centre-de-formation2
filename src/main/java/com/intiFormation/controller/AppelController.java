@@ -20,48 +20,46 @@ import com.intiFormation.service.IcommentaireService;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
-@RequestMapping("/call")
-public class appelController {
+@RequestMapping("/appel")
+public class AppelController {
+
 
 	// Injection
 	@Autowired
 	IappelService service;
+	@Autowired
 	IcommentaireService serviceCommentaire;
 	
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 ///////////////////////////////////////////Redéfinition des méthodes de la couche service///////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	@PostMapping()
+	@PostMapping("/c/add")
 	public Appel addAppel(@RequestBody Appel appel) {
 		
 		
 		return service.ajouterAppel(appel);
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/a/delete/{id}")
 	public void supprAppel(@PathVariable ("id") Integer id) {
 		service.supprimerAppel(id);
 		
 	}
 	
-	@PutMapping
+	@PutMapping("/c/modify")
 	public Appel modifAppel(@RequestBody Appel appel) {
 //	Appel appelSend = service.selectAppelById(appel.getId());
-		
-	
-	
 		return service.ajouterAppel(appel);
-
 	}
 	
-	@GetMapping("/liste")
+	@GetMapping("/c/list")
 	public List<Appel> afficherAll(){
 		
 		return service.selectAllAppels();
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/c/{id}")
 	public Appel afficherById(@PathVariable ("id") Integer id){
 		
 		

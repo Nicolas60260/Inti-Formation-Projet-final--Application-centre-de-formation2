@@ -23,7 +23,7 @@ public class AuthentificationController {
 	@Autowired
 	private jwtUtil jwtokenUtil;
 	
-	@Autowired
+	@Autowired		
 	private AuthenticationManager authenticationManager;
 	
 	@Autowired

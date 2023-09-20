@@ -22,7 +22,7 @@ public class FormationController {
 	@Autowired
 	IformationService formationService;
 
-	@GetMapping("/public")//ok
+	@GetMapping("/public/list")
 	public List<Formation> listeFormation() {
 		return formationService.selectAll();
 	}
@@ -32,12 +32,12 @@ public class FormationController {
 		return formationService.selectById(id).get();
 	}
 
-	@PostMapping("/formation/save")//ok
+	@PostMapping("/f/add")
 	public Formation saveFormation(@RequestBody Formation formation) {
 		return formationService.ajouter(formation);
 	}
 
-	@DeleteMapping("/admin/supprimer/{id}")//ok
+	@DeleteMapping("/a/delete/{id}")
 	public void supprimerFormation(@PathVariable("id") int id) {
 		formationService.supprimer(id);
 

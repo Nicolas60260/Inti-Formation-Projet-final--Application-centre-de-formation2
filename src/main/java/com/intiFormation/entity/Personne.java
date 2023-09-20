@@ -21,7 +21,7 @@ public abstract class Personne {
 	private String mail;
 	private String nom;
 	private String prenom;
-	private Long telephone;
+	private String telephone;
 	
 	public int getId() {
 		return id;
@@ -47,13 +47,13 @@ public abstract class Personne {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	public Long getTelephone() {
+	public String getTelephone() {
 		return telephone;
 	}
-	public void setTelephone(Long telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-	public Personne(int id, String mail, String nom, String prenom, Long telephone) {
+	public Personne(int id, String mail, String nom, String prenom, String telephone) {
 		super();
 		this.id = id;
 		this.mail = mail;

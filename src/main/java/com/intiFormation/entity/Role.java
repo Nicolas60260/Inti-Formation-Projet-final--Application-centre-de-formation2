@@ -48,6 +48,12 @@ public class Role {
 		this.nom = nom;
 		this.listeUtilisateur = listeUtilisateur;
 	}
+	
+	public Role(int id, String nom) {
+		super();
+		this.id = id;
+		this.nom = nom;
+	}
 	public Role() {
 		super();
 		// TODO Auto-generated constructor stub

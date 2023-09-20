@@ -9,15 +9,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Commercial extends Utilisateur{
 
 	@OneToMany(mappedBy="commercial")
+	@JsonIgnore
 	private List<Appel> appels;
 	
 	@OneToMany(mappedBy="commercial")
+	@JsonIgnore
 	private List<Commentaire> commentaires;
-
 	public List<Appel> getAppels() {
 		return appels;
 	}
@@ -39,7 +42,7 @@ public class Commercial extends Utilisateur{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Commercial(int id, String mail, String nom, String prenom, Long telephone) {
+	public Commercial(int id, String mail, String nom, String prenom, String telephone) {
 		super(id, mail, nom, prenom, telephone);
 		// TODO Auto-generated constructor stub
 	}
