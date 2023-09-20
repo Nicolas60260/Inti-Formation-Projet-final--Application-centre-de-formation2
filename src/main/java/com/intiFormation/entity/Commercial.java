@@ -9,15 +9,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Commercial extends Utilisateur{
 
 	@OneToMany(mappedBy="commercial")
+	@JsonIgnore
 	private List<Appel> appels;
 	
 	@OneToMany(mappedBy="commercial")
+	@JsonIgnore
 	private List<Commentaire> commentaires;
-
 	public List<Appel> getAppels() {
 		return appels;
 	}

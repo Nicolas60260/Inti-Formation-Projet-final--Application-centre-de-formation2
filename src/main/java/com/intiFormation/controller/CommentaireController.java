@@ -1,7 +1,7 @@
 package com.intiFormation.controller;
 
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,58 +14,61 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.intiFormation.entity.Appel;
-import com.intiFormation.service.IappelService;
+import com.intiFormation.entity.Commentaire;
 import com.intiFormation.service.IcommentaireService;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
-@RequestMapping("/call")
-public class appelController {
+@RequestMapping("/com")
+public class CommentaireController {
 
-	// Injection
 	@Autowired
-	IappelService service;
-	IcommentaireService serviceCommentaire;
+	IcommentaireService service;
 	
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 ///////////////////////////////////////////Redéfinition des méthodes de la couche service///////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	@PostMapping()
-	public Appel addAppel(@RequestBody Appel appel) {
+	
+
+	@PostMapping
+	public Commentaire addCommentaire(@RequestBody Commentaire commentaire) {
+		// Création de l'objet date qui prend la date du moment de la création du commentaire
+		// au format dd/MM/yyyy hh:mm:ss
+		Date datePostComm= new Date();
+		//on set la date du commentaire
+		commentaire.setDate(datePostComm);
 		
 		
-		return service.ajouterAppel(appel);
+		return service.ajouterCommentaire(commentaire);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void supprAppel(@PathVariable ("id") Integer id) {
-		service.supprimerAppel(id);
+	public void supprCommentaire(@PathVariable ("id") Integer id) {
+		service.supprimerCommentaire(id);
 		
 	}
 	
-	@PutMapping
-	public Appel modifAppel(@RequestBody Appel appel) {
-//	Appel appelSend = service.selectAppelById(appel.getId());
+	@PutMapping()
+	public Commentaire modifCommentaire(@RequestBody Commentaire commentaire) {
+	//	Commentaire commentaireMod= service.afficherCommentaireById(commentaire);
 		
-	
-	
-		return service.ajouterAppel(appel);
-
+		return service.ajouterCommentaire(commentaire);
+		
 	}
 	
 	@GetMapping("/liste")
-	public List<Appel> afficherAll(){
+	public List<Commentaire> afficherAll(){
 		
-		return service.selectAllAppels();
+		return service.afficherAllCommentaire();
 	}
 	
 	@GetMapping("/{id}")
-	public Appel afficherById(@PathVariable ("id") Integer id){
+	public Commentaire afficherById(@PathVariable ("id") Integer id){
 		
-		
-		return service.selectAppelById(id);
+		System.out.println("Dans le controller");
+		return service.afficherCommentaireById(id);
 	}
+	
 	
 }

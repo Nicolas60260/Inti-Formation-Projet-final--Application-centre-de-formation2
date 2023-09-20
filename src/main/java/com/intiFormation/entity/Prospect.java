@@ -9,12 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 
 public class Prospect extends Personne {
 
 	private String statut;
 	@OneToMany(mappedBy = "prospect")
+	@JsonIgnore
 	private List<Appel> appels;
 	@OneToMany(mappedBy = "prospect")
 	private List<Commentaire> commentaires;
