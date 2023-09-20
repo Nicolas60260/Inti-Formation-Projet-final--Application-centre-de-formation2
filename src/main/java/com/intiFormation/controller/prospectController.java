@@ -21,7 +21,7 @@ import com.intiFormation.service.IprospectService;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
-@RequestMapping("/pr")
+@RequestMapping("/prospect")
 public class prospectController {
 
 	// Création du Bean Service pour appel à la couche Service et aux methodes CRUD de prospect
@@ -35,20 +35,20 @@ public class prospectController {
 
 		
 	
-		@PostMapping
+		@PostMapping("/c/add")
 		public Prospect addProspect(@RequestBody Prospect prospect) {
 			
 			
 			return service.ajouterProspect(prospect);
 		}
 		
-		@DeleteMapping("/{id}")
+		@DeleteMapping("/c/delete/{id}")
 		public void supprProspect(@PathVariable ("id") Integer id) {
 			service.supprimerProspect(id);
 			
 		}
 		
-		@PutMapping
+		@PutMapping("/c/modify")
 		public Prospect modifProspect(@RequestBody Prospect prospect) {
 			//Prospect prospectMod= service.afficherProspectById(id);
 			
@@ -56,13 +56,13 @@ public class prospectController {
 			
 		}
 		
-		@GetMapping("/liste")
+		@GetMapping("/c/list")
 		public List<Prospect> afficherAll(){
 			
 			return service.afficherAllProspect();
 		}
 		
-		@GetMapping("/{id}")
+		@GetMapping("/c/{id}")
 		public Prospect afficherById(@PathVariable ("id") Integer id){
 			
 			
