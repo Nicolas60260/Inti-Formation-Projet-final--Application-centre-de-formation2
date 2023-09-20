@@ -22,12 +22,15 @@ public class CoursController {
 	@Autowired
 	IcoursService coursService;
 
+
 	@GetMapping("/p/list")
+
 	public List<Cours> listeCours() {
 		return coursService.selectAll();
 	}
 
 	@GetMapping("/p/{id}")
+
 	public Cours coursById(@PathVariable("id") int id) {
 		return coursService.selectById(id).get();
 	}

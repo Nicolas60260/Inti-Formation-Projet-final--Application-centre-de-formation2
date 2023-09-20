@@ -27,7 +27,7 @@ public class FormationController {
 		return formationService.selectAll();
 	}
 
-	@GetMapping("/public/{id}")
+	@GetMapping("/public/{id}")//ok
 	public Formation formationById(@PathVariable("id") int id) {
 		return formationService.selectById(id).get();
 	}

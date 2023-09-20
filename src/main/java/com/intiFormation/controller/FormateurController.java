@@ -32,7 +32,7 @@ IroleService roleservice;
 		return formateurService.selectAll();
 	}
 
-	@GetMapping("/public/{id}")
+	@GetMapping("/public/{id}") // ok
 	public Formateur formateurById(@PathVariable("id") int id) {
 		return formateurService.selectById(id).get();
 	}
