@@ -20,7 +20,8 @@ import com.intiFormation.service.IcommentaireService;
 @RestController
 @CrossOrigin("http://localhost:4200")
 @RequestMapping("/commentaire")
-public class commentaireController {
+public class CommentaireController {
+
 
 	@Autowired
 	IcommentaireService service;
@@ -66,7 +67,7 @@ public class commentaireController {
 	@GetMapping("/c/{id}")
 	public Commentaire afficherById(@PathVariable ("id") Integer id){
 		
-		
+		System.out.println("Dans le controller");
 		return service.afficherCommentaireById(id);
 	}
 	

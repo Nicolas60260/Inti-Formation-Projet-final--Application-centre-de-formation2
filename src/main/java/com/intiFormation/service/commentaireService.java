@@ -10,6 +10,7 @@ import com.intiFormation.entity.Commentaire;
 
 @Service
 public class commentaireService implements IcommentaireService {
+
 @Autowired
 	IcommentaireDao dao;
 	
@@ -30,7 +31,7 @@ public class commentaireService implements IcommentaireService {
 	@Override
 	public Commentaire afficherCommentaireById(int id) {
 		
-		return dao.getById(id);
+		return dao.findById(id).get();
 	}
 
 	@Override

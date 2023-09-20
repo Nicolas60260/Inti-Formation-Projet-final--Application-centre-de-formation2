@@ -22,7 +22,8 @@ import com.intiFormation.service.IprospectService;
 @RestController
 @CrossOrigin("http://localhost:4200")
 @RequestMapping("/prospect")
-public class prospectController {
+public class ProspectController {
+
 
 	// Création du Bean Service pour appel à la couche Service et aux methodes CRUD de prospect
 

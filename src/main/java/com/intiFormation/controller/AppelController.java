@@ -21,7 +21,8 @@ import com.intiFormation.service.IcommentaireService;
 @RestController
 @CrossOrigin("http://localhost:4200")
 @RequestMapping("/appel")
-public class appelController {
+public class AppelController {
+
 
 	// Injection
 	@Autowired
@@ -49,11 +50,7 @@ public class appelController {
 	@PutMapping("/c/modify")
 	public Appel modifAppel(@RequestBody Appel appel) {
 //	Appel appelSend = service.selectAppelById(appel.getId());
-		
-	
-	
 		return service.ajouterAppel(appel);
-
 	}
 	
 	@GetMapping("/c/list")

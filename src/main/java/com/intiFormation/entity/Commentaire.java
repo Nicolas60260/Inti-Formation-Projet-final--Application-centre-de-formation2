@@ -14,6 +14,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 
@@ -49,11 +51,13 @@ Commercial commercial;
 
 @OneToOne
 @JoinColumn(name="idappel")
+@JsonIgnore
 Appel appel;
 
 
 @ManyToOne
 @JoinColumn(name="idprospect") // Ou listecommentaire peut-être
+@JsonIgnore
 Prospect prospect;
 
 

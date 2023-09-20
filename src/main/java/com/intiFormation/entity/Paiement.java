@@ -21,8 +21,7 @@ public class Paiement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	private String mode;
 
