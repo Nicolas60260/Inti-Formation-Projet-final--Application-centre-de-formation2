@@ -55,7 +55,7 @@ public class Participant extends Utilisateur {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Participant(int id, String mail, String nom, String prenom, Long telephone) {
+	public Participant(int id, String mail, String nom, String prenom, String telephone) {
 		super(id, mail, nom, prenom, telephone);
 		// TODO Auto-generated constructor stub
 	}

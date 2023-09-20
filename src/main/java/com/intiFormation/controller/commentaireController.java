@@ -19,7 +19,7 @@ import com.intiFormation.service.IcommentaireService;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
-@RequestMapping("/com")
+@RequestMapping("/commentaire")
 public class commentaireController {
 
 	@Autowired
@@ -31,7 +31,7 @@ public class commentaireController {
 
 	
 
-	@PostMapping
+	@PostMapping("/c/add")
 	public Commentaire addCommentaire(@RequestBody Commentaire commentaire) {
 		// Création de l'objet date qui prend la date du moment de la création du commentaire
 		// au format dd/MM/yyyy hh:mm:ss
@@ -43,13 +43,13 @@ public class commentaireController {
 		return service.ajouterCommentaire(commentaire);
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/a/delete/{id}")
 	public void supprCommentaire(@PathVariable ("id") Integer id) {
 		service.supprimerCommentaire(id);
 		
 	}
 	
-	@PutMapping()
+	@PutMapping("/c/modify")
 	public Commentaire modifCommentaire(@RequestBody Commentaire commentaire) {
 	//	Commentaire commentaireMod= service.afficherCommentaireById(commentaire);
 		
@@ -57,13 +57,13 @@ public class commentaireController {
 		
 	}
 	
-	@GetMapping("/liste")
+	@GetMapping("/c/list")
 	public List<Commentaire> afficherAll(){
 		
 		return service.afficherAllCommentaire();
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/c/{id}")
 	public Commentaire afficherById(@PathVariable ("id") Integer id){
 		
 		

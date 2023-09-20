@@ -18,7 +18,7 @@ public class Prospect extends Personne {
 	private List<Appel> appels;
 	@OneToMany(mappedBy = "prospect")
 	private List<Commentaire> commentaires;
-	public Prospect(int id, String mail, String nom, String prenom, Long telephone, String statut, List<Appel> appels,
+	public Prospect(int id, String mail, String nom, String prenom, String telephone, String statut, List<Appel> appels,
 			List<Commentaire> commentaires) {
 		super(id, mail, nom, prenom, telephone);
 		this.statut = statut;
@@ -29,7 +29,7 @@ public class Prospect extends Personne {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Prospect(int id, String mail, String nom, String prenom, Long telephone) {
+	public Prospect(int id, String mail, String nom, String prenom, String telephone) {
 		super(id, mail, nom, prenom, telephone);
 		// TODO Auto-generated constructor stub
 	}

@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Participant;
+import com.intiFormation.entity.Role;
 import com.intiFormation.service.IparticipantService;
+import com.intiFormation.service.IroleService;
 
 @RestController
 @RequestMapping("/participant")
@@ -21,23 +23,30 @@ import com.intiFormation.service.IparticipantService;
 public class ParticipantController {
 	@Autowired
 	IparticipantService participantService;
-
-	@GetMapping("/public")
+@Autowired
+IroleService roleservice;
+	
+	
+	@GetMapping("/c/f/list")
 	public List<Participant> listeParticipant() {
 		return participantService.selectAll();
 	}
 
-	@GetMapping("/public/{id}")
+	@GetMapping("/p/c/f/{id}")
 	public Participant participantById(@PathVariable("id") int id) {
 		return participantService.selectById(id).get();
 	}
 
-	@PostMapping("/formateur/save")
+	@PostMapping("/c/f/add")
 	public Participant saveParticipant(@RequestBody Participant participant) {
+		Role role = roleservice.findByNom("PARTICIPANT");
+		participant.setRole(role);
+		
+		
 		return participantService.ajouter(participant);
 	}
 
-	@DeleteMapping("/admin/supprimer/{id}")
+	@DeleteMapping("/a/delete/{id}")
 	public void supprimerParticipant(@PathVariable("id") int id) {
 		participantService.supprimer(id);
 	}
