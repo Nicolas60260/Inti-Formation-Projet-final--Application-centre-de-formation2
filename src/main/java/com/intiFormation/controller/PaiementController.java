@@ -22,22 +22,22 @@ public class PaiementController {
 	@Autowired
 	IpaiementService paiementService;
 
-	@GetMapping("/public")
+	@GetMapping("/a/list")
 	public List<Paiement> listePaiement() {
 		return paiementService.selectAll();
 	}
 
-	@GetMapping("/public/{id}")
+	@GetMapping("/a/{id}")
 	public Paiement paiementById(@PathVariable("id") int id) {
 		return paiementService.selectById(id).get();
 	}
 
-	@PostMapping("/formateur/save")
+	@PostMapping("/c/add")
 	public Paiement savePaiement(@RequestBody Paiement paiement) {
 		return paiementService.ajouter(paiement);
 	}
 
-	@DeleteMapping("/admin/supprimer/{id}")
+	@DeleteMapping("/a/delete/{id}")
 	public void supprimerPaiement(@PathVariable("id") int id) {
 		paiementService.supprimer(id);
 	}

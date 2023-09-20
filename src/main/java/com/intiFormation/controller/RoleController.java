@@ -1,7 +1,6 @@
 package com.intiFormation.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,56 +13,55 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.intiFormation.entity.Appel;
-import com.intiFormation.service.IappelService;
-import com.intiFormation.service.IcommentaireService;
+import com.intiFormation.entity.Role;
+import com.intiFormation.service.IroleService;
+
 
 @RestController
 @CrossOrigin("http://localhost:4200")
-@RequestMapping("/appel")
-public class AppelController {
-
-
-	// Injection
+@RequestMapping("/role")
+public class RoleController {
 	@Autowired
-	IappelService service;
-	@Autowired
-	IcommentaireService serviceCommentaire;
+	IroleService service;
 	
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 ///////////////////////////////////////////Redéfinition des méthodes de la couche service///////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	@PostMapping("/c/add")
-	public Appel addAppel(@RequestBody Appel appel) {
+
+
+	@PostMapping("/a/add")
+	public Role addRole(@RequestBody Role role) {
 		
 		
-		return service.ajouterAppel(appel);
+		return service.ajouterRole(role);
 	}
 	
 	@DeleteMapping("/a/delete/{id}")
-	public void supprAppel(@PathVariable ("id") Integer id) {
-		service.supprimerAppel(id);
+	public void supprRole(@PathVariable ("id") Integer id) {
+		service.supprimerRole(id);
 		
 	}
 	
-	@PutMapping("/c/modify")
-	public Appel modifAppel(@RequestBody Appel appel) {
-//	Appel appelSend = service.selectAppelById(appel.getId());
-		return service.ajouterAppel(appel);
+	@PutMapping("/a/modify")
+	public Role modifRole(@RequestBody Role role) {
+		//Role roleMod= service.afficherRoleById(id);
+		
+		return service.ajouterRole(role);
+		
 	}
 	
-	@GetMapping("/c/list")
-	public List<Appel> afficherAll(){
+	@GetMapping("/a/list")
+	public List<Role> afficherAll(){
 		
-		return service.selectAllAppels();
+		return service.afficherAllRole();
 	}
 	
-	@GetMapping("/c/{id}")
-	public Appel afficherById(@PathVariable ("id") Integer id){
+	@GetMapping("/a/{id}")
+	public Role afficherById(@PathVariable ("id") Integer id){
 		
 		
-		return service.selectAppelById(id);
+		return service.afficherRoleById(id);
 	}
 	
 }

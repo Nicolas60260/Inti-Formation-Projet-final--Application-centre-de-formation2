@@ -10,8 +10,8 @@ import com.intiFormation.entity.Commentaire;
 
 @Service
 public class commentaireService implements IcommentaireService {
-	
-	@Autowired
+
+@Autowired
 	IcommentaireDao dao;
 	
 	@Override
