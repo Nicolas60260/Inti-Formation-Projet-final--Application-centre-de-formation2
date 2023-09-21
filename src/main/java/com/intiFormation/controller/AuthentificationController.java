@@ -29,7 +29,7 @@ public class AuthentificationController {
 	@Autowired
 	private UserDetailsService customUserDetailsService;
 
-	@RequestMapping(value="/loginUserJwt" ,method =RequestMethod.POST) // Ou  @PostMapping sans le RequestMethod.POST
+	@RequestMapping(value="/login" ,method =RequestMethod.POST) // Ou  @PostMapping sans le RequestMethod.POST
 	public AuthentificationResponse authenticate(@RequestBody AuthentificationRequest authentificationRequest) throws Exception
 	{
 		try {

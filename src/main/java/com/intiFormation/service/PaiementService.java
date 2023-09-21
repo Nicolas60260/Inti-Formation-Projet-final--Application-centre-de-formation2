@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.intiFormation.dao.IpaiementDao;
 import com.intiFormation.entity.Paiement;
+import com.intiFormation.entity.Participant;
 
 @Service
 public class PaiementService implements IpaiementService{
@@ -32,4 +33,9 @@ public class PaiementService implements IpaiementService{
 	@Override
 	public List<Paiement> selectAll() {
 		return dao.findAll();
-}}
+}
+
+	@Override
+	public List<Paiement> findByParticipant(Participant participant) {
+		return dao.findByParticipant(participant);
+	}}

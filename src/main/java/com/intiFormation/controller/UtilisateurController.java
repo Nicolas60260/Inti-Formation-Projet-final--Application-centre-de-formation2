@@ -47,7 +47,7 @@ public class UtilisateurController {
 		iutilisateurService.ajouter(utilisateur);
 	}
 	
-	@PostMapping(path = "/p/c/f/modify") //ok
+	@PostMapping(path = "/pcf/modify") //ok
 	public void modifyUtilisateur(@RequestBody Utilisateur utilisateur) {
 		utilisateur.setPassword(encoder.encode(utilisateur.getPassword()));
 		iutilisateurService.modifier(utilisateur);

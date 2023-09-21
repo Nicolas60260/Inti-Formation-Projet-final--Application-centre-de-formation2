@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Appel;
+import com.intiFormation.entity.Commentaire;
 import com.intiFormation.service.IappelService;
 import com.intiFormation.service.IcommentaireService;
 
@@ -36,15 +37,13 @@ public class AppelController {
 
 	@PostMapping("/c/add")
 	public Appel addAppel(@RequestBody Appel appel) {
-		
-		
-		return service.ajouterAppel(appel);
+		return service.ajouterAppel(appel); 
 	}
 	
+	
 	@DeleteMapping("/a/delete/{id}")
-	public void supprAppel(@PathVariable ("id") Integer id) {
+	public void supprAppel(@PathVariable ("id") Integer id) {		
 		service.supprimerAppel(id);
-		
 	}
 	
 	@PutMapping("/c/modify")
