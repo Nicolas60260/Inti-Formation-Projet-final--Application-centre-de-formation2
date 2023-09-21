@@ -8,6 +8,5 @@ import com.intiFormation.entity.Appel;
 
 
 public interface IappelDao extends JpaRepository<Appel, Integer>{
-	
 		
 }

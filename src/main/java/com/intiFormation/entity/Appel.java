@@ -2,6 +2,7 @@ package com.intiFormation.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 
@@ -28,8 +32,7 @@ public class Appel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
+	@Temporal(TemporalType.TIMESTAMP)
 	Date debutAppel;
 	long duree;
 	boolean RDV;
@@ -41,8 +44,10 @@ public class Appel {
 	@JoinColumn(name="idcommercial")
 	Commercial commercial;
 	
-	@OneToOne(mappedBy = "appel")
-	Commentaire commmentaire;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idcommentaire")
+	@JsonManagedReference
+	Commentaire commentaire;
 	
 	//Relations à gérer
 	@ManyToOne
@@ -62,7 +67,7 @@ public class Appel {
 		this.duree = duree;
 		RDV = rDV;
 		this.commercial = commercial;
-		this.commmentaire = commmentaire;
+		this.commentaire = commmentaire;
 		this.prospect = prospect;
 	}
 
@@ -152,15 +157,15 @@ public class Appel {
 
 
 
-	public Commentaire getCommmentaire() {
-		return commmentaire;
+	public Commentaire getCommentaire() {
+		return commentaire;
 	}
 
 
 
 
-	public void setCommmentaire(Commentaire commmentaire) {
-		this.commmentaire = commmentaire;
+	public void setCommentaire(Commentaire commmentaire) {
+		this.commentaire = commmentaire;
 	}
 
 
@@ -183,7 +188,7 @@ public class Appel {
 	@Override
 	public String toString() {
 		return "Appel [id=" + id + ", debutAppel=" + debutAppel + ", duree=" + duree + ", RDV=" + RDV
-				+ ", commmentaire=" + commmentaire + "]";
+				+ ", commmentaire=" + commentaire + "]";
 	}
 	
 	

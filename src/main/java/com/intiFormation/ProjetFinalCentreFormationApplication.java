@@ -10,13 +10,10 @@ import com.intiFormation.entity.Role;
 import com.intiFormation.service.IroleService;
 
 @SpringBootApplication
+
 public class ProjetFinalCentreFormationApplication {
 	@Autowired
 	private IroleService roleservice;
-
-	public static void main(String[] args) {
-		SpringApplication.run(ProjetFinalCentreFormationApplication.class, args);
-	}
 
 	@PostConstruct
 	public void init() {
@@ -24,12 +21,16 @@ public class ProjetFinalCentreFormationApplication {
 		Role COMMERCIAL = new Role(2, "COMMERCIAL");
 		Role FORMATEUR = new Role(3, "FORMATEUR");
 		Role PARTICIPANT = new Role(4, "PARTICIPANT");
-
+		
 		roleservice.ajouterRole(ADMIN);
 		roleservice.ajouterRole(COMMERCIAL);
 		roleservice.ajouterRole(FORMATEUR);
 		roleservice.ajouterRole(PARTICIPANT);
-
+		
 	}
+	public static void main(String[] args) {
+		SpringApplication.run(ProjetFinalCentreFormationApplication.class, args);
+	}
+
 
 }

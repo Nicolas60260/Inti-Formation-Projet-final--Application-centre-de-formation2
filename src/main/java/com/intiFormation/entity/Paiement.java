@@ -24,11 +24,13 @@ public class Paiement {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	private String mode;
+	private boolean valide;
 
 	@ManyToOne
 	@JoinColumn(name = "idparticipant")
 	@JsonIgnore
 	private Participant participant;
+	
 
 	public Paiement(int id, Date date, String mode, Participant participant) {
 		super();
@@ -37,6 +39,17 @@ public class Paiement {
 		this.mode = mode;
 		this.participant = participant;
 	}
+	
+	
+	public Paiement(int id, Date date, String mode, boolean valide, Participant participant) {
+		super();
+		this.id = id;
+		this.date = date;
+		this.mode = mode;
+		this.valide = valide;
+		this.participant = participant;
+	}
+
 
 	public Paiement() {
 		super();
@@ -75,9 +88,18 @@ public class Paiement {
 		this.participant = participant;
 	}
 
+	public boolean isValide() {
+		return valide;
+	}
+
+	public void setValide(boolean valide) {
+		this.valide = valide;
+	}
+
 	@Override
 	public String toString() {
-		return "Paiement [id=" + id + ", date=" + date + ", mode=" + mode + ", participant=" + participant + "]";
+		return "Paiement [id=" + id + ", date=" + date + ", mode=" + mode + ", valide=" + valide + ", participant="
+				+ participant + "]";
 	}
 
 }

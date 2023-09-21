@@ -2,6 +2,7 @@ package com.intiFormation.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,9 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 
@@ -32,11 +35,10 @@ public class Commentaire {
 	
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-int id;
-String texte;
-@Temporal(TemporalType.DATE)
-@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
-Date date;
+private int id;
+private String texte;
+@Temporal(TemporalType.TIMESTAMP)
+private Date date;
 
 
 
@@ -46,19 +48,18 @@ Date date;
 
 @ManyToOne
 @JoinColumn(name="idcommercial")
-Commercial commercial;
+private Commercial commercial;
 
 
-@OneToOne
-@JoinColumn(name="idappel")
-@JsonIgnore
-Appel appel;
+@OneToOne(mappedBy = "commentaire")
+@JsonBackReference
+private Appel appel;
 
 
 @ManyToOne
 @JoinColumn(name="idprospect") // Ou listecommentaire peut-être
 @JsonIgnore
-Prospect prospect;
+private Prospect prospect;
 
 
 

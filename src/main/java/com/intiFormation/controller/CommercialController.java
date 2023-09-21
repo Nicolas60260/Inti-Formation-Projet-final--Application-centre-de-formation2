@@ -3,6 +3,7 @@ package com.intiFormation.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,8 @@ public class CommercialController {
 	private IcommercialService icommercialService;
 	@Autowired
 	private IroleService iroleservice;
-	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	@GetMapping(path = "/public/list")//ok
 	public List<Commercial> listCommercial(){
@@ -46,7 +48,7 @@ public class CommercialController {
 		Role role = iroleservice.findByNom("COMMERCIAL");
 		commercial.setRole(role);
 		
-		
+		commercial.setPassword(encoder.encode(commercial.getPassword()));
 		icommercialService.ajouter(commercial);
 	}
 	
