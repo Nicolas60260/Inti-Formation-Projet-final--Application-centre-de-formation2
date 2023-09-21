@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Paiement;
+import com.intiFormation.entity.Participant;
 import com.intiFormation.service.IpaiementService;
+import com.intiFormation.service.IparticipantService;
 
 @RestController
 @RequestMapping("/paiement")
@@ -21,6 +23,9 @@ import com.intiFormation.service.IpaiementService;
 public class PaiementController {
 	@Autowired
 	IpaiementService paiementService;
+	
+	@Autowired
+	IparticipantService participantService;
 
 	@GetMapping("/a/list")
 	public List<Paiement> listePaiement() {
@@ -31,8 +36,14 @@ public class PaiementController {
 	public Paiement paiementById(@PathVariable("id") int id) {
 		return paiementService.selectById(id).get();
 	}
+	
+	@GetMapping("/pa/participant/{id}")
+	public List<Paiement> paiementByParticipant(@PathVariable("id") int id) {
+		Participant participant = participantService.selectById(id).get();
+		return paiementService.findByParticipant(participant);
+	}
 
-	@PostMapping("/c/add")
+	@PostMapping("/p/add")
 	public Paiement savePaiement(@RequestBody Paiement paiement) {
 		return paiementService.ajouter(paiement);
 	}

@@ -42,12 +42,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.OPTIONS).permitAll()
 				.antMatchers("/loginUserJwt","/*/public/**").permitAll()
-				//.antMatchers("/*/p/**").hasAnyAuthority("PARTICIPANT","ADMIN","FORMATEUR")
-				//.antMatchers("/*/f/**").hasAnyAuthority("FORMATEUR","ADMIN")
-				//.antMatchers("/*/c/**").hasAnyAuthority("ADMIN","COMMERCIAL")
-				//.antMatchers("/*/a/**").hasAnyAuthority("ADMIN")
+
+//				.antMatchers("/*/p/**").hasAnyAuthority("PARTICIPANT","ADMIN","FORMATEUR")
+//				.antMatchers("/*/pfc/**").hasAnyAuthority("PARTICIPANT","ADMIN","FORMATEUR","COMMERCIAL")
+//				.antMatchers("/*/cf/**").hasAnyAuthority("ADMIN","FORMATEUR","COMMERCIAL")
+//				.antMatchers("/*/pa/**").hasAnyAuthority("PARTICIPANT")
+//				.antMatchers("/*/f/**").hasAnyAuthority("FORMATEUR","ADMIN")
+//				.antMatchers("/*/c/**").hasAnyAuthority("ADMIN","COMMERCIAL")
+//				.antMatchers("/*/a/**").hasAnyAuthority("ADMIN")
 				
-				.anyRequest().permitAll() /*authenticated()*/
+//				.anyRequest().authenticated()
+
 				.and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.addFilterBefore(jwtrequestfilter, UsernamePasswordAuthenticationFilter.class);

@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.intiFormation.entity.Appel;
 import com.intiFormation.entity.Commentaire;
+import com.intiFormation.service.IappelService;
 import com.intiFormation.service.IcommentaireService;
 
 @RestController
@@ -25,6 +27,8 @@ public class CommentaireController {
 
 	@Autowired
 	IcommentaireService service;
+	@Autowired
+	IappelService appelService;
 	
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 ///////////////////////////////////////////Redéfinition des méthodes de la couche service///////////////////////////////////////////
@@ -46,6 +50,9 @@ public class CommentaireController {
 	
 	@DeleteMapping("/a/delete/{id}")
 	public void supprCommentaire(@PathVariable ("id") Integer id) {
+		Commentaire commentaire = service.afficherCommentaireById(id);
+		Appel appel = commentaire.getAppel();
+		appel.setCommentaire(null);
 		service.supprimerCommentaire(id);
 		
 	}
@@ -67,8 +74,13 @@ public class CommentaireController {
 	@GetMapping("/c/{id}")
 	public Commentaire afficherById(@PathVariable ("id") Integer id){
 		
-		System.out.println("Dans le controller");
 		return service.afficherCommentaireById(id);
+	}
+	
+	@GetMapping("/c/appel/{id}")
+	public Commentaire afficherByAppelId(@PathVariable("id") Integer id) {
+		Appel appel = appelService.selectAppelById(id);
+		return service.findByAppel(appel);
 	}
 	
 	

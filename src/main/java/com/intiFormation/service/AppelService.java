@@ -11,7 +11,7 @@ import com.intiFormation.entity.Appel;
 
 
 @Service
-public class appelService implements IappelService{
+public class AppelService implements IappelService{
 @Autowired
 IappelDao dao;
 	
