@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.intiFormation.dao.IcommentaireDao;
+import com.intiFormation.entity.Appel;
 import com.intiFormation.entity.Commentaire;
 
 @Service
-public class commentaireService implements IcommentaireService {
+public class CommentaireService implements IcommentaireService {
 
 @Autowired
 	IcommentaireDao dao;
@@ -38,6 +39,11 @@ public class commentaireService implements IcommentaireService {
 	public void supprimerCommentaire(int id) {
 		dao.deleteById(id);
 
+	}
+
+	@Override
+	public Commentaire findByAppel(Appel appel) {
+		return dao.findByAppel(appel);
 	}
 
 }

@@ -10,7 +10,7 @@ import com.intiFormation.entity.Prospect;
 
 //Annotation service + implémentation de l'interface du service
 @Service
-public class prospectService implements IprospectService {
+public class ProspectService implements IprospectService {
 
 	// Création du Bean Dao pour appel à la couche Dao et aux methodes CRUD
 

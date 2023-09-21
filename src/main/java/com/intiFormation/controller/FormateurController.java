@@ -23,10 +23,9 @@ import com.intiFormation.service.IroleService;
 public class FormateurController {
 	@Autowired
 	IformateurService formateurService;
-@Autowired
-IroleService roleservice;
-	
-	
+	@Autowired
+	IroleService roleservice;
+
 	@GetMapping("/public/list")
 	public List<Formateur> listeFormateur() {
 		return formateurService.selectAll();
@@ -41,7 +40,7 @@ IroleService roleservice;
 	public Formateur saveFormateur(@RequestBody Formateur formateur) {
 		Role role = roleservice.findByNom("FORMATEUR");
 		formateur.setRole(role);
-		
+
 		return formateurService.ajouter(formateur);
 	}
 
