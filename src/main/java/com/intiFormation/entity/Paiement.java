@@ -24,18 +24,29 @@ public class Paiement {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	private String mode;
+	private int montant;
 
 	@ManyToOne
 	@JoinColumn(name = "idparticipant")
 	@JsonIgnore
 	private Participant participant;
 
-	public Paiement(int id, Date date, String mode, Participant participant) {
+
+	public Paiement(int id, Date date, String mode, int montant, Participant participant) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.mode = mode;
+		this.montant = montant;
 		this.participant = participant;
+	}
+
+	public int getMontant() {
+		return montant;
+	}
+
+	public void setMontant(int montant) {
+		this.montant = montant;
 	}
 
 	public Paiement() {
