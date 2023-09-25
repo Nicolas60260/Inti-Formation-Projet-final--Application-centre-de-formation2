@@ -46,6 +46,11 @@ public class Utilisateur extends Personne{
 		super(id, mail, nom, prenom, telephone);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Utilisateur(String mail, String nom, String prenom, String telephone) {
+		super( mail, nom, prenom, telephone);
+		
+	}
 	@Override
 	public String toString() {
 		return "Utilisateur [username=" + username + ", password=" + password + ", role=" + role + "]";

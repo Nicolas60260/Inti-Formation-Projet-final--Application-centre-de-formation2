@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.intiFormation.dao.IappelDao;
 import com.intiFormation.entity.Appel;
+import com.intiFormation.entity.Commentaire;
+import com.intiFormation.entity.Prospect;
 
 
 @Service
@@ -40,6 +42,21 @@ IappelDao dao;
 	public List<Appel> selectAllAppels() {
 		// TODO Auto-generated method stub
 		return dao.findAll();
+	}
+
+	@Override
+	public List<Appel> findByProspect(Prospect prospect) {
+		return dao.findByProspect(prospect);
+	}
+
+	@Override
+	public Appel findByCommentaire(Commentaire commentaire) {
+		return dao.findByCommentaire(commentaire);
+	}
+
+	@Override
+	public List<Appel> findByCommentaireIsNull() {
+		return dao.findByCommentaireIsNull();
 	}
 
 }
