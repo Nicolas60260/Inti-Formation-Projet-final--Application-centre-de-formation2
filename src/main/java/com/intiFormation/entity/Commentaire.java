@@ -2,7 +2,6 @@ package com.intiFormation.entity;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,11 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 
@@ -48,6 +43,7 @@ private Date date;
 
 @ManyToOne
 @JoinColumn(name="idcommercial")
+
 private Commercial commercial;
 
 
@@ -58,7 +54,7 @@ private Appel appel;
 
 @ManyToOne
 @JoinColumn(name="idprospect") // Ou listecommentaire peut-être
-@JsonIgnore
+
 private Prospect prospect;
 
 

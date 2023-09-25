@@ -61,6 +61,15 @@ public abstract class Personne {
 		this.prenom = prenom;
 		this.telephone = telephone;
 	}
+	
+	
+	public Personne(String mail, String nom, String prenom, String telephone) {
+		super();
+		this.mail = mail;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.telephone = telephone;
+	}
 	public Personne() {
 		super();
 		// TODO Auto-generated constructor stub
