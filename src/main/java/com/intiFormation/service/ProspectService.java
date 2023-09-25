@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.intiFormation.dao.IparticipantDao;
 import com.intiFormation.dao.IprospectDao;
+import com.intiFormation.entity.Participant;
 import com.intiFormation.entity.Prospect;
 
 //Annotation service + implémentation de l'interface du service
@@ -16,6 +18,9 @@ public class ProspectService implements IprospectService {
 
 	@Autowired
 	IprospectDao dao;
+	
+	@Autowired
+	IparticipantDao participantDao;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 ///////////////////////////////////////////Redéfinition des méthodes de l'interface///////////////////////////////////////////
@@ -43,6 +48,12 @@ public class ProspectService implements IprospectService {
 	public void supprimerProspect(int id) {
 		dao.deleteById(id);
 
+	}
+
+	@Override
+	public Participant inscrireParticipant(Prospect prospect) {
+		Participant participant = new Participant(prospect);
+		return participantDao.save(participant);
 	}
 
 }

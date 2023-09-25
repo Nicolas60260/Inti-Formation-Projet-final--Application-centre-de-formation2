@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.intiFormation.dao.IcommentaireDao;
 import com.intiFormation.entity.Appel;
 import com.intiFormation.entity.Commentaire;
+import com.intiFormation.entity.Prospect;
 
 @Service
 public class CommentaireService implements IcommentaireService {
@@ -44,6 +45,11 @@ public class CommentaireService implements IcommentaireService {
 	@Override
 	public Commentaire findByAppel(Appel appel) {
 		return dao.findByAppel(appel);
+	}
+
+	@Override
+	public List<Commentaire> findByProspect(Prospect prospect) {
+		return dao.findByProspect(prospect);
 	}
 
 }

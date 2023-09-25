@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.intiFormation.entity.Participant;
 import com.intiFormation.entity.Prospect;
 import com.intiFormation.service.IprospectService;
 
@@ -68,6 +69,11 @@ public class ProspectController {
 			
 			
 			return service.afficherProspectById(id);
+		}
+		@PostMapping("/c/register")
+		public Participant inscrireParticipant(@RequestBody Prospect prospect) {
+			return service.inscrireParticipant(prospect);
+			
 		}
 		
 }

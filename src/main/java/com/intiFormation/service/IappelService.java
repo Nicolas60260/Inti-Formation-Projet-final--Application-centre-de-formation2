@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.intiFormation.entity.Appel;
+import com.intiFormation.entity.Commentaire;
+import com.intiFormation.entity.Prospect;
 
 public interface IappelService {
 	
@@ -11,5 +13,11 @@ public interface IappelService {
 	public void supprimerAppel(int id);
 	public Appel selectAppelById(int id);
 	public List<Appel> selectAllAppels();
+	public List<Appel> findByProspect(Prospect prospect);
+	public Appel findByCommentaire(Commentaire commentaire);
+	
+	public List<Appel> findByCommentaireIsNull();
+
+
 
 }
