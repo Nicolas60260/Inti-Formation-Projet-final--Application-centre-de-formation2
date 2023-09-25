@@ -42,7 +42,8 @@ public class Appel {
 	
 	@ManyToOne
 	@JoinColumn(name="idcommercial")
-	Commercial commercial;
+	@JsonBackReference // fait qu'on peut utiliser post mais pas get ! on peut pas get le commercial par juste l'appel mais l'inverse si 
+	Commercial commercial; // avec managed reference
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idcommentaire")
