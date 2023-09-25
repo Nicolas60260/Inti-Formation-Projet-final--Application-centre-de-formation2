@@ -42,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.OPTIONS).permitAll()
 				.antMatchers("/loginUserJwt","/*/public/**").permitAll()
+
 //				.antMatchers("/*/p/**").hasAnyAuthority("PARTICIPANT","ADMIN","FORMATEUR")
 //				.antMatchers("/*/pfc/**").hasAnyAuthority("PARTICIPANT","ADMIN","FORMATEUR","COMMERCIAL")
 //				.antMatchers("/*/cf/**").hasAnyAuthority("ADMIN","FORMATEUR","COMMERCIAL")
@@ -51,6 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //				.antMatchers("/*/a/**").hasAnyAuthority("ADMIN")
 				
 //				.anyRequest().authenticated()
+
 				.and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.addFilterBefore(jwtrequestfilter, UsernamePasswordAuthenticationFilter.class);
