@@ -2,6 +2,7 @@ package com.intiFormation.service;
 
 import java.util.List;
 
+import com.intiFormation.entity.Prospect;
 import com.intiFormation.entity.Appel;
 import com.intiFormation.entity.Commentaire;
 
@@ -16,4 +17,6 @@ public Commentaire ajouterCommentaire(Commentaire commentaire);
 	public void supprimerCommentaire(int id);
 	
 	public Commentaire findByAppel(Appel appel);
+	
+	public List<Commentaire> findByProspect(Prospect prospect);
 }

@@ -6,6 +6,4 @@ import com.intiFormation.entity.Appel;
 import com.intiFormation.entity.Prospect;
 
 public interface IprospectDao extends JpaRepository<Prospect, Integer>{
-	
-	
 }

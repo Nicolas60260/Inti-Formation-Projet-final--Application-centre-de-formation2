@@ -13,11 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 
@@ -35,14 +32,15 @@ public class Appel {
 	@Temporal(TemporalType.TIMESTAMP)
 	Date debutAppel;
 	long duree;
-	boolean RDV;
+	boolean rdv;
 	
 //////////////////////////Attributs avec liens à d'autres classes//////////////////////////
 	
 	
 	@ManyToOne
 	@JoinColumn(name="idcommercial")
-	Commercial commercial;
+	@JsonBackReference // fait qu'on peut utiliser post mais pas get ! on peut pas get le commercial par juste l'appel mais l'inverse si 
+	Commercial commercial; // avec managed reference
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idcommentaire")
@@ -65,7 +63,7 @@ public class Appel {
 		this.id = id;
 		this.debutAppel = debutAppel;
 		this.duree = duree;
-		RDV = rDV;
+		rdv = rDV;
 		this.commercial = commercial;
 		this.commentaire = commmentaire;
 		this.prospect = prospect;
@@ -130,14 +128,14 @@ public class Appel {
 
 
 	public boolean isRDV() {
-		return RDV;
+		return rdv;
 	}
 
 
 
 
 	public void setRDV(boolean rDV) {
-		RDV = rDV;
+		rdv = rDV;
 	}
 
 
@@ -187,8 +185,8 @@ public class Appel {
 
 	@Override
 	public String toString() {
-		return "Appel [id=" + id + ", debutAppel=" + debutAppel + ", duree=" + duree + ", RDV=" + RDV
-				+ ", commmentaire=" + commentaire + "]";
+		return "Appel [id=" + id + ", debutAppel=" + debutAppel + ", duree=" + duree + ", RDV=" + rdv
+				 + "]";
 	}
 	
 	

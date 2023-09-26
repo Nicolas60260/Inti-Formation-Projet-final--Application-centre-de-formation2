@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.intiFormation.entity.Participant;
 import com.intiFormation.entity.Prospect;
 
 
@@ -23,6 +24,8 @@ public interface IprospectService {
 	public Prospect afficherProspectById(int id);
 	
 	public void supprimerProspect(int id);
+	
+	public Participant inscrireParticipant(Prospect prospect);
 	
 	
 	

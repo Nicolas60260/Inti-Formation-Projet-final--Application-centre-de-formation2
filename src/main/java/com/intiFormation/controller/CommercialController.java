@@ -37,6 +37,8 @@ public class CommercialController {
 	public List<Commercial> listCommercial(){
 		return icommercialService.afficherAll();
 	}
+	//chefchewen
+	//akchar
 	
 	@GetMapping(path = "/public/{id}")//ok
 	public Commercial getCommercial(@PathVariable("id") int  id){

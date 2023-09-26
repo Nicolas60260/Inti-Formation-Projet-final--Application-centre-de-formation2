@@ -20,6 +20,7 @@ public class Prospect extends Personne {
 	@JsonIgnore
 	private List<Appel> appels;
 	@OneToMany(mappedBy = "prospect")
+	@JsonIgnore
 	private List<Commentaire> commentaires;
 	public Prospect(int id, String mail, String nom, String prenom, String telephone, String statut, List<Appel> appels,
 			List<Commentaire> commentaires) {

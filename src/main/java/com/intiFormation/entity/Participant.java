@@ -70,6 +70,9 @@ public class Participant extends Utilisateur {
 		this.formations = formations;
 		this.paiements = paiements;
 	}
+	public Participant(Prospect prospect) {
+		super(prospect.getMail(),prospect.getNom(),prospect.getPrenom(),prospect.getTelephone());
+	}
 
 	@Override
 	public String toString() {

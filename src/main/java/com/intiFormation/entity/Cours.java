@@ -1,6 +1,5 @@
 package com.intiFormation.entity;
 
-
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,7 +17,6 @@ public class Cours {
 	private int id;
 	private long duree;
 	private String nom;
-
 
 	private String fichier;// String ou String?
 
@@ -39,14 +37,14 @@ public class Cours {
 		this.fichier = fichier;
 		this.formations = formations;
 	}
+	
 
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
+	public Cours(int id, long duree, String nom, String fichier) {
+		super();
+		this.id = id;
+		this.duree = duree;
 		this.nom = nom;
+		this.fichier = fichier;
 	}
 
 
@@ -82,9 +80,18 @@ public class Cours {
 		this.formations = formations;
 	}
 
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 	@Override
 	public String toString() {
-		return "Cours [id=" + id + ", duree=" + duree + ", fichier=" + fichier + "]";
+		return "Cours [id=" + id + ", duree=" + duree + ", nom=" + nom + ", fichier=" + fichier + ", formations="
+				+ formations + "]";
 	}
 
 }
