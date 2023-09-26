@@ -17,6 +17,7 @@ public class Cours {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private long duree;
+	private String nom;
 
 
 	private String fichier;// String ou String?
@@ -30,13 +31,24 @@ public class Cours {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cours(int id, long duree, String fichier, List<Formation> formations) {
+	public Cours(int id, long duree, String nom, String fichier, List<Formation> formations) {
 		super();
 		this.id = id;
 		this.duree = duree;
+		this.nom = nom;
 		this.fichier = fichier;
 		this.formations = formations;
 	}
+
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 
 	public int getId() {
 		return id;

@@ -1,6 +1,6 @@
 package com.intiFormation.entity;
 
-import java.util.Date;
+import java.util.*;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -15,6 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Formation {
@@ -32,15 +34,16 @@ public class Formation {
 	@JoinColumn(name = "idformateur")
 	private Formateur formateur;
 
-	@ManyToMany
-	@JoinTable(name = "Formation_Participant", joinColumns = @JoinColumn(name = "idformation"), inverseJoinColumns = @JoinColumn(name = "idparticipant"))
+	@ManyToMany (mappedBy = "formations")
+	@JsonIgnore
 	private List<Participant> participants;
+	
 	@ManyToMany
 	@JoinTable(name = "Formation_Cours", joinColumns = @JoinColumn(name = "idformation"), inverseJoinColumns = @JoinColumn(name = "idcours"))
-	private List<Cours> cours;
+	private Set <Cours> cours;
 
 	public Formation(int id, String nom, Date dateDebut, Date dateFin, double prix, Formateur formateur,
-			List<Participant> participants, List<Cours> cours) {
+			List<Participant> participants, Set<Cours> cours) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -113,11 +116,11 @@ public class Formation {
 		this.participants = participants;
 	}
 
-	public List<Cours> getCours() {
+	public Set<Cours> getCours() {
 		return cours;
 	}
 
-	public void setCours(List<Cours> cours) {
+	public void setCours(Set<Cours> cours) {
 		this.cours = cours;
 	}
 

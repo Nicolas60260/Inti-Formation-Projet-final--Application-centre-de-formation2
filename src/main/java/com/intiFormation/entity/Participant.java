@@ -1,6 +1,6 @@
 package com.intiFormation.entity;
 
-import java.util.List;
+import java.util.*;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -9,21 +9,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Participant extends Utilisateur {
 
 	private double sommeDue;
 
-	@ManyToMany (mappedBy = "participants")
-	@JsonIgnore
-	private List<Formation> formations;
+	@ManyToMany 
+	@JoinTable(name = "Participant_Formation", joinColumns = @JoinColumn(name = "idparticipant"), inverseJoinColumns = @JoinColumn(name = "idformation"))
+	private Set<Formation> formations;
 	
 	@OneToMany(mappedBy = "participant")
+	@JsonManagedReference // en get va retourner les paiements, en post va les ignorer
 	private List<Paiement> paiements;
 
 	public double getSommeDue() {
@@ -34,11 +38,11 @@ public class Participant extends Utilisateur {
 		this.sommeDue = sommeDue;
 	}
 
-	public List<Formation> getFormations() {
+	public Set<Formation> getFormations() {
 		return formations;
 	}
 
-	public void setFormations(List<Formation> formations) {
+	public void setFormations(Set<Formation> formations) {
 		this.formations = formations;
 	}
 
@@ -60,7 +64,7 @@ public class Participant extends Utilisateur {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Participant(double sommeDue, List<Formation> formations, List<Paiement> paiements) {
+	public Participant(double sommeDue, Set<Formation> formations, List<Paiement> paiements) {
 		super();
 		this.sommeDue = sommeDue;
 		this.formations = formations;

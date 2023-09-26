@@ -11,4 +11,5 @@ public interface IparticipantService {
 	public void supprimer(int id);
 	public Optional<Participant> selectById(int id);
 	public List<Participant> selectAll();
+	public Participant trouverParticipantsParId(int id);
 }

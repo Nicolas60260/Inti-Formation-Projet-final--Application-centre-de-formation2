@@ -34,4 +34,9 @@ dao.deleteById(id);
 		return dao.findAll();
 	}
 
+	@Override
+	public Participant trouverParticipantsParId(int id) {
+		return dao.findByPaiements_id(id);
+	}
+
 }
