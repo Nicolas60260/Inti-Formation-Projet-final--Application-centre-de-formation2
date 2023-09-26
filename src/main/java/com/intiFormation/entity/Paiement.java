@@ -13,7 +13,9 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Paiement {
@@ -27,10 +29,10 @@ public class Paiement {
 	private int montant;
 	private boolean valide;
 
-
+	
 	@ManyToOne
 	@JoinColumn(name = "idparticipant")
-	@JsonIgnore
+	@JsonBackReference // en post va prendre les donnée JSON en get va les ignorer
 	private Participant participant;
 	
 

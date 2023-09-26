@@ -29,14 +29,6 @@ public class Cours {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cours(int id, long duree, String fichier, List<Formation> formations) {
-		super();
-		this.id = id;
-		this.duree = duree;
-		this.fichier = fichier;
-		this.formations = formations;
-	}
-
 	public Cours(int id, long duree, String nom, String fichier, List<Formation> formations) {
 		super();
 		this.id = id;
@@ -54,6 +46,7 @@ public class Cours {
 		this.nom = nom;
 		this.fichier = fichier;
 	}
+
 
 	public int getId() {
 		return id;
