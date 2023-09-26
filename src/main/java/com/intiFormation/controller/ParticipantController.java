@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.intiFormation.dao.IparticipantDao;
 import com.intiFormation.entity.Participant;
 import com.intiFormation.entity.Role;
 import com.intiFormation.service.IparticipantService;
@@ -28,6 +29,9 @@ public class ParticipantController {
 	IroleService roleservice;
 	@Autowired
 	private BCryptPasswordEncoder encoder;
+	
+	@Autowired
+	IparticipantDao pdao;
 
 	@GetMapping("/cf/list")
 	public List<Participant> listeParticipant() {
@@ -50,5 +54,11 @@ public class ParticipantController {
 	@DeleteMapping("/a/delete/{id}")
 	public void supprimerParticipant(@PathVariable("id") int id) {
 		participantService.supprimer(id);
+	}
+	
+	@GetMapping("/cf/trouverParticipantsParIdPaiement/{idPaiement}")
+	public Participant trouverParticipantsParId(@PathVariable("idPaiement") int idPaiement)
+	{
+		return participantService.trouverParticipantsParId(idPaiement);
 	}
 }
