@@ -54,6 +54,7 @@ public class UtilisateurController {
 		int iduser = utilisateur.getId();
 		if (iduser == 0) {
 			utilisateur.setPassword(premiereLettre+utilisateur.getNom()+annee);
+			System.out.println(premiereLettre+utilisateur.getNom()+annee);
 		}
 		// Passage du mot de passe récupéré de l'objet en entrée, dans l'encodeur pour envoi vers BD
 	utilisateur.setPassword(encoder.encode(utilisateur.getPassword()));

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.intiFormation.dao.IformationDao;
+import com.intiFormation.entity.Cours;
 import com.intiFormation.entity.Formation;
 
 @Service
@@ -33,5 +34,10 @@ public class FormationService implements IformationService {
 	public List<Formation> selectAll() {
 		return dao.findAll();
 	}
+	
+	public List<Formation> findByCours(Cours cours){
+		return dao.findByCours(cours);
+	}
+
 
 }
