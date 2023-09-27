@@ -1,5 +1,6 @@
 package com.intiFormation.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,23 @@ public class CommercialController {
 	public void SaveUser(@RequestBody Commercial commercial) {
 		Role role = iroleservice.findByNom("COMMERCIAL");
 		commercial.setRole(role);
-		
+		// Section de traitement du mot de passe.
+				/*
+				 * Generation automatique du mot de passe à la création d'un utilisateur si l'Id
+				 * == 0 Generation selon la première lettre du prénom, le nom de l'utilisateur
+				 * et l'année en cours concaténés On insère les traitements dans le if ? Pour
+				 * conserver + de mémoire si la section est pas sollicitée.
+				 */
+				Date dateannee = new Date();
+				int annee = dateannee.getYear();
+				String premiereLettre = commercial.getPrenom().substring(0, 1);
+				// Substring prénom
+				// getnom
+
+				int iduser = commercial.getId();
+				if (iduser == 0) {
+					commercial.setPassword(premiereLettre + commercial.getNom() + annee);
+				}
 		commercial.setPassword(encoder.encode(commercial.getPassword()));
 		icommercialService.ajouter(commercial);
 	}
