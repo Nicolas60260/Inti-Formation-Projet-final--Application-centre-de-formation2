@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.intiFormation.dao.IcoursDao;
+import com.intiFormation.entity.Cours;
 import com.intiFormation.entity.Formation;
+import com.intiFormation.service.IcoursService;
 import com.intiFormation.service.IformationService;
 
 @RestController
@@ -21,6 +24,8 @@ import com.intiFormation.service.IformationService;
 public class FormationController {
 	@Autowired
 	IformationService formationService;
+	@Autowired
+	IcoursService coursService;
 
 	@GetMapping("/public/list")
 	public List<Formation> listeFormation() {
@@ -30,6 +35,13 @@ public class FormationController {
 	@GetMapping("/public/{id}")//ok
 	public Formation formationById(@PathVariable("id") int id) {
 		return formationService.selectById(id).get();
+	}
+	
+	@GetMapping("/a/cours/{idcours}")
+	public List<Formation> formationsByCours(@PathVariable("idcours") int idcours){
+		Cours cours = coursService.selectById(idcours).get();
+		return formationService.findByCours(cours);
+		
 	}
 
 	@PostMapping("/f/add")

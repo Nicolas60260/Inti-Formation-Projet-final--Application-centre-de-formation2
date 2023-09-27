@@ -30,6 +30,7 @@ public class FormateurController {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
+
 	@GetMapping("/public/list")
 	public List<Formateur> listeFormateur() {
 		return formateurService.selectAll();
@@ -63,7 +64,7 @@ public class FormateurController {
 			formateur.setPassword(premiereLettre + formateur.getNom() + annee);
 		}
 		formateur.setPassword(encoder.encode(formateur.getPassword()));
-				
+
 		return formateurService.ajouter(formateur);
 	}
 
