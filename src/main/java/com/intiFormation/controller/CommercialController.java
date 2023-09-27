@@ -23,28 +23,28 @@ import com.intiFormation.service.IroleService;
 @CrossOrigin("http://localhost:4200")
 @RequestMapping("/commercial")
 public class CommercialController {
-	
-	//Injections
+
+	// Injections
 	@Autowired
 	private IcommercialService icommercialService;
 	@Autowired
 	private IroleService iroleservice;
 	@Autowired
 	private BCryptPasswordEncoder encoder;
-	
-	@GetMapping(path = "/public/list")//ok
-	public List<Commercial> listCommercial(){
+
+	@GetMapping(path = "/public/list") // ok
+	public List<Commercial> listCommercial() {
 		return icommercialService.afficherAll();
 	}
-	//chefchewen
-	//akchar
-	
-	@GetMapping(path = "/public/{id}")//ok
-	public Commercial getCommercial(@PathVariable("id") int  id){
+	// chefchewen
+	// akchar
+
+	@GetMapping(path = "/public/{id}") // ok
+	public Commercial getCommercial(@PathVariable("id") int id) {
 		return icommercialService.afficherParId(id);
 	}
-	
-	@PostMapping(path = "/a/add")//ok
+
+	@PostMapping(path = "/a/add") // ok
 	public void SaveUser(@RequestBody Commercial commercial) {
 		Role role = iroleservice.findByNom("COMMERCIAL");
 		commercial.setRole(role);
@@ -68,14 +68,14 @@ public class CommercialController {
 		commercial.setPassword(encoder.encode(commercial.getPassword()));
 		icommercialService.ajouter(commercial);
 	}
-	
-	@PostMapping(path = "/c/modify") //ok
+
+	@PostMapping(path = "/c/modify") // ok
 	public void modifyCommercial(@RequestBody Commercial commercial) {
 		icommercialService.modifier(commercial);
 	}
-	
-	@DeleteMapping(path = "/a/delete/{id}")//ok
-	public void deleteCommercial(@PathVariable("id") int  id) {
+
+	@DeleteMapping(path = "/a/delete/{id}") // ok
+	public void deleteCommercial(@PathVariable("id") int id) {
 		icommercialService.supprimer(id);
 	}
 

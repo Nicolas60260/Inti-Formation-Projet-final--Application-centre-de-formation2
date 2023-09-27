@@ -34,7 +34,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	}
 	
 	private List<GrantedAuthority> getAuthorities(Utilisateur utilisateur){
-		List<GrantedAuthority> authorities = new ArrayList<>();
+		List<GrantedAuthority> authorities = new ArrayList();
 		authorities.add(new SimpleGrantedAuthority(utilisateur.getRole().getNom()));
 		
 		return authorities;

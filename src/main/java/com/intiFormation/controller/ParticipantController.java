@@ -48,24 +48,24 @@ public class ParticipantController {
 	public Participant saveParticipant(@RequestBody Participant participant) {
 		Role role = roleservice.findByNom("PARTICIPANT");
 		participant.setRole(role);
-		
-		// Section de traitement du mot de passe.
-				/*
-				 * Generation automatique du mot de passe à la création d'un utilisateur si l'Id
-				 * == 0 Generation selon la première lettre du prénom, le nom de l'utilisateur
-				 * et l'année en cours concaténés On insère les traitements dans le if ? Pour
-				 * conserver + de mémoire si la section est pas sollicitée.
-				 */
-				Date dateannee = new Date();
-				int annee = dateannee.getYear();
-				String premiereLettre = participant.getPrenom().substring(0, 1);
-				// Substring prénom
-				// getnom
 
-				int iduser = participant.getId();
-				if (iduser == 0) {
-					participant.setPassword(premiereLettre + participant.getNom() + annee);
-				}
+		// Section de traitement du mot de passe.
+		/*
+		 * Generation automatique du mot de passe à la création d'un utilisateur si l'Id
+		 * == 0 Generation selon la première lettre du prénom, le nom de l'utilisateur
+		 * et l'année en cours concaténés On insère les traitements dans le if ? Pour
+		 * conserver + de mémoire si la section est pas sollicitée.
+		 */
+		Date dateannee = new Date();
+		int annee = dateannee.getYear();
+		String premiereLettre = participant.getPrenom().substring(0, 1);
+		// Substring prénom
+		// getnom
+
+		int iduser = participant.getId();
+		if (iduser == 0) {
+			participant.setPassword(premiereLettre + participant.getNom() + annee);
+		}
 		participant.setPassword(encoder.encode(participant.getPassword()));
 		return participantService.ajouter(participant);
 	}

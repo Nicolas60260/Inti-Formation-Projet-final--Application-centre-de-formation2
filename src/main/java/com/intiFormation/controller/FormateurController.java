@@ -27,10 +27,10 @@ public class FormateurController {
 	IformateurService formateurService;
 	@Autowired
 	IroleService roleservice;
-
 	@Autowired
 	private BCryptPasswordEncoder encoder;
-	
+
+
 	@GetMapping("/public/list")
 	public List<Formateur> listeFormateur() {
 		return formateurService.selectAll();
@@ -45,24 +45,26 @@ public class FormateurController {
 	public Formateur saveFormateur(@RequestBody Formateur formateur) {
 		Role role = roleservice.findByNom("FORMATEUR");
 		formateur.setRole(role);
-		// Section de traitement du mot de passe.
-				/*
-				 * Generation automatique du mot de passe à la création d'un utilisateur si l'Id
-				 * == 0 Generation selon la première lettre du prénom, le nom de l'utilisateur
-				 * et l'année en cours concaténés On insère les traitements dans le if ? Pour
-				 * conserver + de mémoire si la section est pas sollicitée.
-				 */
-				Date dateannee = new Date();
-				int annee = dateannee.getYear();
-				String premiereLettre = formateur.getPrenom().substring(0, 1);
-				// Substring prénom
-				// getnom
 
-				int iduser = formateur.getId();
-				if (iduser == 0) {
-					formateur.setPassword(premiereLettre + formateur.getNom() + annee);
-				}
-				formateur.setPassword(encoder.encode(formateur.getPassword()));
+		// Section de traitement du mot de passe.
+		/*
+		 * Generation automatique du mot de passe à la création d'un utilisateur si l'Id
+		 * == 0 Generation selon la première lettre du prénom, le nom de l'utilisateur
+		 * et l'année en cours concaténés On insère les traitements dans le if ? Pour
+		 * conserver + de mémoire si la section est pas sollicitée.
+		 */
+		Date dateannee = new Date();
+		int annee = dateannee.getYear();
+		String premiereLettre = formateur.getPrenom().substring(0, 1);
+		// Substring prénom
+		// getnom
+
+		int iduser = formateur.getId();
+		if (iduser == 0) {
+			formateur.setPassword(premiereLettre + formateur.getNom() + annee);
+		}
+		formateur.setPassword(encoder.encode(formateur.getPassword()));
+
 		return formateurService.ajouter(formateur);
 	}
 
