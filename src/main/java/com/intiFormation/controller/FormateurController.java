@@ -54,14 +54,16 @@ public class FormateurController {
 		 * conserver + de mémoire si la section est pas sollicitée.
 		 */
 		Date dateannee = new Date();
-		int annee = dateannee.getYear();
+		int annee = dateannee.getYear() + 1900;
 		String premiereLettre = formateur.getPrenom().substring(0, 1);
 		// Substring prénom
 		// getnom
 
 		int iduser = formateur.getId();
 		if (iduser == 0) {
-			formateur.setPassword(premiereLettre + formateur.getNom() + annee);
+			formateur.setPassword(premiereLettre+formateur.getNom()+annee);
+			System.out.println(annee);
+			System.out.println(premiereLettre+formateur.getNom()+annee);
 		}
 		formateur.setPassword(encoder.encode(formateur.getPassword()));
 

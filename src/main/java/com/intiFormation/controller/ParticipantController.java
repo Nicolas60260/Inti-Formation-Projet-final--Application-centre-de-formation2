@@ -57,7 +57,7 @@ public class ParticipantController {
 		 * conserver + de mémoire si la section est pas sollicitée.
 		 */
 		Date dateannee = new Date();
-		int annee = dateannee.getYear();
+		int annee = dateannee.getYear() + 1900;
 		String premiereLettre = participant.getPrenom().substring(0, 1);
 		// Substring prénom
 		// getnom
