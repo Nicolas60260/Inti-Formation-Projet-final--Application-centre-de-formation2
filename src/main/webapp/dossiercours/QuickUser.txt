@@ -1,0 +1,13 @@
+{
+    "mail" : "dsqdqdsq",
+    "nom": "qsddqsdqs",
+    "prenom": "TESTPOSTMAN23",
+    "telephone": 665142123,
+    "username": "TESTPqsdqsdOSTMAN2",
+    "password": "TESTPOSTMAN2",
+    "sommeDue" : 45
+}
+
+
+{"username":"user",
+"password":"mdp"}

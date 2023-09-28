@@ -2,11 +2,8 @@ package com.intiFormation.entity;
 
 import java.util.List;
 
-import javax.persistence.DiscriminatorValue;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -16,10 +13,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Prospect extends Personne {
 
 	private String statut;
-	@OneToMany(mappedBy = "prospect")
+	@OneToMany(mappedBy = "prospect", cascade = CascadeType.REMOVE)
 	@JsonIgnore
 	private List<Appel> appels;
-	@OneToMany(mappedBy = "prospect")
+	@OneToMany(mappedBy = "prospect", cascade = CascadeType.REMOVE)
 	@JsonIgnore
 	private List<Commentaire> commentaires;
 	public Prospect(int id, String mail, String nom, String prenom, String telephone, String statut, List<Appel> appels,

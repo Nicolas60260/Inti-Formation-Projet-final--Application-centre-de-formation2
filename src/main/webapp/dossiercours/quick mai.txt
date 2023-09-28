@@ -1,0 +1,6 @@
+{
+    "mailprospect":"gayssant@hotmail.fr",
+    "mailcommercial":"gayssant.harold@gmail.com",
+    "subject":"test",
+    "texte":"Ceci est un test de la fonction mail"
+}

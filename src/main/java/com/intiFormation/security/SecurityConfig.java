@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.OPTIONS).permitAll()
-				.antMatchers("/login","/*/public/**").permitAll()
+				.antMatchers("/login","/*/public/**","/dossiercours/**").permitAll()
 				.antMatchers("/*/p/**").hasAnyAuthority("PARTICIPANT","ADMIN","FORMATEUR")
 				.antMatchers("/*/pfc/**").hasAnyAuthority("PARTICIPANT","ADMIN","FORMATEUR","COMMERCIAL")
 				.antMatchers("/*/cf/**").hasAnyAuthority("ADMIN","FORMATEUR","COMMERCIAL")
@@ -49,8 +49,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			    .antMatchers("/*/f/**").hasAnyAuthority("FORMATEUR","ADMIN")
 			    .antMatchers("/*/c/**").hasAnyAuthority("ADMIN","COMMERCIAL")
 				.antMatchers("/*/a/**").hasAnyAuthority("ADMIN")
-				
 				.anyRequest().authenticated()
+
 				.and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.addFilterBefore(jwtrequestfilter, UsernamePasswordAuthenticationFilter.class);

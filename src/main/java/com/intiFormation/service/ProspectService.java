@@ -1,14 +1,17 @@
 package com.intiFormation.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.intiFormation.dao.IparticipantDao;
 import com.intiFormation.dao.IprospectDao;
 import com.intiFormation.entity.Participant;
 import com.intiFormation.entity.Prospect;
+import com.intiFormation.entity.Role;
 
 //Annotation service + implémentation de l'interface du service
 @Service
@@ -21,6 +24,11 @@ public class ProspectService implements IprospectService {
 	
 	@Autowired
 	IparticipantDao participantDao;
+	
+	@Autowired
+	IroleService roleservice;
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 ///////////////////////////////////////////Redéfinition des méthodes de l'interface///////////////////////////////////////////
@@ -53,6 +61,28 @@ public class ProspectService implements IprospectService {
 	@Override
 	public Participant inscrireParticipant(Prospect prospect) {
 		Participant participant = new Participant(prospect);
+		Role role = roleservice.findByNom("PARTICIPANT");
+		participant.setRole(role);
+		
+		// Section de traitement du mot de passe.
+				/*
+				 * Generation automatique du mot de passe à la création d'un utilisateur si l'Id
+				 * == 0 Generation selon la première lettre du prénom, le nom de l'utilisateur
+				 * et l'année en cours concaténés On insère les traitements dans le if ? Pour
+				 * conserver + de mémoire si la section est pas sollicitée.
+				 */
+				Date dateannee = new Date();
+				int annee = dateannee.getYear();
+				String premiereLettre = participant.getPrenom().substring(0, 1);
+				// Substring prénom
+				// getnom
+
+				int iduser = participant.getId();
+				if (iduser == 0) {
+					participant.setPassword(premiereLettre + participant.getNom() + annee);
+				}
+				System.out.println(participant.getPassword());
+		participant.setPassword(encoder.encode(participant.getPassword()));
 		return participantDao.save(participant);
 	}
 
