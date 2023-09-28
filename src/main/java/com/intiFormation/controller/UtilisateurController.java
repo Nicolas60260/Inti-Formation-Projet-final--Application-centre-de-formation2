@@ -83,10 +83,7 @@ public class UtilisateurController {
 		iutilisateurService.supprimer(id);
 	}
 	
-@GetMapping(path = "/public/userByUsername/{username}")
-	public Utilisateur userByUsername(@PathVariable("username") String  username){
-		return iutilisateurService.findByUsername(username).get();
-	}
+
 	
 
 }
