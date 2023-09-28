@@ -34,7 +34,7 @@ public class ParticipantController {
 	@Autowired
 	IparticipantDao pdao;
 
-	@GetMapping("/cf/list")
+	@GetMapping("/pcf/list")
 	public List<Participant> listeParticipant() {
 		return participantService.selectAll();
 	}
@@ -75,7 +75,7 @@ public class ParticipantController {
 		participantService.supprimer(id);
 	}
 	
-	@GetMapping("/cf/trouverParticipantsParIdPaiement/{idPaiement}")
+	@GetMapping("/pcf/trouverParticipantsParIdPaiement/{idPaiement}")
 	public Participant trouverParticipantsParId(@PathVariable("idPaiement") int idPaiement)
 	{
 		return participantService.trouverParticipantsParId(idPaiement);

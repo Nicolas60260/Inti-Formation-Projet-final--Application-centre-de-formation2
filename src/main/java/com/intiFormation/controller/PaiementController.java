@@ -27,28 +27,28 @@ public class PaiementController {
 	@Autowired
 	IparticipantService participantService;
 
-	@GetMapping("/a/list")
+	@GetMapping("/pfc/list")
 	public List<Paiement> listePaiement() {
 		return paiementService.selectAll();
 	}
 
-	@GetMapping("/a/{id}")
+	@GetMapping("/c/{id}")
 	public Paiement paiementById(@PathVariable("id") int id) {
 		return paiementService.selectById(id).get();
 	}
 	
-	@GetMapping("/pa/participant/{id}")
+	@GetMapping("/c/participant/{id}")
 	public List<Paiement> paiementByParticipant(@PathVariable("id") int id) {
 		Participant participant = participantService.selectById(id).get();
 		return paiementService.findByParticipant(participant);
 	}
 
-	@PostMapping("/p/add")
+	@PostMapping("/c/add")
 	public Paiement savePaiement(@RequestBody Paiement paiement) {
 		return paiementService.ajouter(paiement);
 	}
 
-	@DeleteMapping("/a/delete/{id}")
+	@DeleteMapping("/c/delete/{id}")
 	public void supprimerPaiement(@PathVariable("id") int id) {
 		paiementService.supprimer(id);
 	}

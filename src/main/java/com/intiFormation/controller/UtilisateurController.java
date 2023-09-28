@@ -82,5 +82,8 @@ public class UtilisateurController {
 	public void deleteUtilisateur(@PathVariable("id") int id) {
 		iutilisateurService.supprimer(id);
 	}
+	
+
+	
 
 }

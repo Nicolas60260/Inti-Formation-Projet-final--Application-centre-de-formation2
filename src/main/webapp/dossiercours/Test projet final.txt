@@ -1,0 +1,24 @@
+{
+    "mail":"@",
+    "nom":"Dupont",
+    "prenom":"Henry",
+    "téléphone":6789,
+    "username":"",
+    "password":""
+}
+
+{
+   
+    "nom":"Java Jee",
+    "dateDebut":"12/09/2022 12:58:34",
+    "dateFin":"13/10/2022 12:58:34",
+    "prix":30
+    
+}
+
+{
+    "date":"2022-09-12T12:58:34.222",
+    "mode":"espèce"
+}
+
+token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhIiwiZXhwIjoxNjk1MjQ2ODMxLCJpYXQiOjE2OTUyMTA4MzF9.LVV2s-I2KDl-vtEbUzcK2YlWCJVowisT5-lIfBuGswU
