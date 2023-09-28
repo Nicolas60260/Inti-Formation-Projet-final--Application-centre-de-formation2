@@ -9,4 +9,6 @@ import java.util.List;
 
 
 public interface IcommercialDao extends JpaRepository <Commercial,Integer>{
+	
+//	public Commercial findByAppel(Appel appel);
 }

@@ -2,6 +2,7 @@ package com.intiFormation.service;
 
 import java.util.List;
 
+import com.intiFormation.entity.Appel;
 import com.intiFormation.entity.Commercial;
 import com.intiFormation.entity.Utilisateur;
 
@@ -16,4 +17,7 @@ public List<Commercial> afficherAll();
 	public void supprimer(int id);
 	
 	public void modifier(Commercial c);
+	
+	
+	
 }

@@ -49,7 +49,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			    .antMatchers("/*/f/**").hasAnyAuthority("FORMATEUR","ADMIN")
 			    .antMatchers("/*/c/**").hasAnyAuthority("ADMIN","COMMERCIAL")
 				.antMatchers("/*/a/**").hasAnyAuthority("ADMIN")
-				
 				.anyRequest().authenticated()
 
 				.and().sessionManagement()

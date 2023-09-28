@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.intiFormation.dao.IcommercialDao;
 import com.intiFormation.dao.IutilisateurDao;
+import com.intiFormation.entity.Appel;
 import com.intiFormation.entity.Commercial;
 @Service
 public class CommercialService implements IcommercialService{
@@ -40,5 +41,6 @@ public class CommercialService implements IcommercialService{
 		dao.save(c);
 		
 	}
+
 
 }
