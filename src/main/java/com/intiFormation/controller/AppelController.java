@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiFormation.entity.Appel;
+import com.intiFormation.entity.Commercial;
 import com.intiFormation.entity.EmailScheduleRequest;
 import com.intiFormation.entity.Prospect;
 import com.intiFormation.service.IappelService;
@@ -73,7 +74,9 @@ public class AppelController {
 
 		return service.selectAllAppels();
 	}
-
+	
+	
+	
 	@GetMapping("/c/comvide")
 	public List<Appel> afficherByCommentaireNull(){
 		return service.findByCommentaireIsNull();
@@ -84,14 +87,24 @@ public class AppelController {
 
 		return service.selectAppelById(id);
 	}
-
+	
+	@GetMapping("/c/commercialappels/{id}")
+	public List<Appel> afficherByCommercialId(@PathVariable("id") Integer id) {
+		Commercial commercial = commercialService.afficherParId(id);
+		return service.findByCommercial(commercial);}
+		
 	@GetMapping("/c/prospect/{id}")
 	public List<Appel> afficherByProspectId(@PathVariable("id") Integer id) {
 		Prospect prospect = prospectService.afficherProspectById(id);
 		return service.findByProspect(prospect);
 	}
-
 	
+	@GetMapping("/c/commercial/{id}")
+	public Commercial afficherCommercial(@PathVariable("id")int id) {
+		Appel appel = service.selectAppelById(id);
+		
+		return appel.getCommercial();
+	}
 	
 	public String scheduleEmail(Appel appel) {
 		

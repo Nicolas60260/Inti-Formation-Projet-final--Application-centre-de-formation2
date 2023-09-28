@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.intiFormation.entity.Appel;
 import com.intiFormation.entity.Commentaire;
+import com.intiFormation.entity.Commercial;
 import com.intiFormation.entity.Prospect;
 
 public interface IappelService {
@@ -17,6 +18,8 @@ public interface IappelService {
 	public Appel findByCommentaire(Commentaire commentaire);
 	
 	public List<Appel> findByCommentaireIsNull();
+	public List<Appel> findByCommercial(Commercial commercial);
+
 
 
 

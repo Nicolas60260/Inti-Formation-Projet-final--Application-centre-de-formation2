@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import com.intiFormation.entity.Cours;
+import com.intiFormation.entity.Formateur;
 import com.intiFormation.entity.Formation;
 
 public interface IformationService {
@@ -13,4 +14,6 @@ public interface IformationService {
 	public Optional<Formation> selectById(int id);
 	public List<Formation> selectAll();
 	public List<Formation> findByCours(Cours cours);
+	public List<Formation> findByFormateur(Formateur formateur);
+
 }

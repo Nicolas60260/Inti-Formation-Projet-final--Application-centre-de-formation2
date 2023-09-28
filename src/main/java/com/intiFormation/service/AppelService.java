@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.intiFormation.dao.IappelDao;
 import com.intiFormation.entity.Appel;
 import com.intiFormation.entity.Commentaire;
+import com.intiFormation.entity.Commercial;
 import com.intiFormation.entity.Prospect;
 
 
@@ -57,6 +58,11 @@ IappelDao dao;
 	@Override
 	public List<Appel> findByCommentaireIsNull() {
 		return dao.findByCommentaireIsNull();
+	}
+
+	@Override
+	public List<Appel> findByCommercial(Commercial commercial) {
+		return dao.findByCommercial(commercial);
 	}
 
 }
