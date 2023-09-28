@@ -71,5 +71,11 @@ public class UtilisateurController {
 	public void deleteUtilisateur(@PathVariable("id") int  id) {
 		iutilisateurService.supprimer(id);
 	}
+	
+@GetMapping(path = "/public/userByUsername/{username}")
+	public Utilisateur userByUsername(@PathVariable("username") String  username){
+		return iutilisateurService.findByUsername(username).get();
+	}
+	
 
 }
