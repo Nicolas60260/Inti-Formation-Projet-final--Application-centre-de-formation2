@@ -37,8 +37,8 @@ public class UtilisateurController {
 	public Utilisateur getUtilisateur(@PathVariable("id") int id) {
 		return iutilisateurService.afficherParId(id);
 	}
-	
-	@GetMapping(path = "/public/{username}")
+
+	@GetMapping(path = "/public/userByUsername/{username}")
 	public Utilisateur userByUsername(@PathVariable("username") String username){
 		return iutilisateurService.findByUsername(username).get();
 	}
@@ -54,6 +54,7 @@ public class UtilisateurController {
 		 * conserver + de mémoire si la section est pas sollicitée.
 		 */
 		Date dateannee = new Date();
+
 		int annee = dateannee.getYear()+1900;
 		String premiereLettre = utilisateur.getPrenom().substring(0, 1);
 		// Substring prénom
