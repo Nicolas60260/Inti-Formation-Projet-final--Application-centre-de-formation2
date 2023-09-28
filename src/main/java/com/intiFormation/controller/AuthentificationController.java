@@ -32,8 +32,11 @@ public class AuthentificationController {
 	@RequestMapping(value="/login" ,method =RequestMethod.POST) // Ou  @PostMapping sans le RequestMethod.POST
 	public AuthentificationResponse authenticate(@RequestBody AuthentificationRequest authentificationRequest) throws Exception
 	{
+		System.out.println("---------------------------------------------------");
+		System.out.println(authentificationRequest.getPassword() + authentificationRequest.getUsername());
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authentificationRequest.getUsername(), authentificationRequest.getPassword()));
+			System.out.println(authentificationRequest);
 			
 		} catch (BadCredentialsException e) {
 			// TODO: handle exception
